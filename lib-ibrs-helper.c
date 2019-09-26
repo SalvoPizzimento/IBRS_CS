@@ -317,46 +317,61 @@ bool verify(char* groupname, char* filename){
     gmp_randinit_default(prng);
     gmp_randseed_os_rng(prng, prng_sec_level);
 
-    directory = calloc(50, sizeof(char));
     ibrs_public_params_t public_params;
     FILE* pairing_stream, *param_stream, *sign_stream;
+
+	directory = calloc(100, sizeof(char));
     sprintf(directory, "./%s/pairing.txt", groupname);
     pairing_stream = fopen(directory, "r");
+	free(directory);
+
+	directory = calloc(100, sizeof(char));
     sprintf(directory, "./%s/param.txt", groupname);
     param_stream = fopen(directory, "r");
+	free(directory);
+
     sign_stream = fopen("sign.txt", "r");
 
 	load_params(&public_params, default_sec_level, pairing_stream, param_stream);
     
-    int num_id = 10;
-    array_ibrs ids;
-	ibrs_sig sign;
+    directory = calloc(100, sizeof(char));
     sprintf(directory, "./%s/ids.txt", groupname);
-    FILE* file_ids = fopen(directory, "r");
+    array_ibrs ids;
+	FILE* file_ids = fopen(directory, "r");
+	free(directory);
+	
+	char c;
+    int num_lines = 1;
+
+    for (c = getc(file_ids); c != EOF; c = getc(file_ids)){
+        if (c == '\n') 
+            num_lines += 1;
+    }
+    
+    rewind(file_ids);
     
     if(file_ids!=NULL){
-        char* line[num_id];
-        char* clean_line;
+        char* line[num_lines];
         int j = 0;
         size_t len = 0;
-
         
-        init_array_ibrs(&ids, num_id);
-        for(j = 0; j < num_id; j++) {
-            clean_line = calloc(50, sizeof(char));
+        init_array_ibrs(&ids, num_lines);
+        for(j = 0; j < num_lines; j++) {
             line[j] = NULL;
             len = 0;
             if(getline(&line[j], &len, file_ids) != -1){
-                strncpy(clean_line, line[j], strlen(line[j])-2);
-                insert_id(&ids, clean_line, j);
+				line[j][strcspn(line[j], "\r\n")] = 0;
+                insert_id(&ids, line[j], j);
             }
-            free(clean_line);
         }
         fclose(file_ids);
 	}
 
+  	bool result;	
+	ibrs_sig sign;
+	
 	ibrs_import_sign(&public_params, ids.size, sign_stream, &sign);
-    bool result;
     result = ibrs_sign_ver(&public_params, ids, (uint8_t *)filename, &sign);
-    return result;
+    
+	return result;
 }
