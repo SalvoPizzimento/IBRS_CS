@@ -161,6 +161,7 @@ void start_exchange(int sockfd){
            		return;
 			}
             printf("Gruppo Inesistente\n");
+            return;
         }
         else{
 		    auth = authenticate(username, groupname);
@@ -227,22 +228,53 @@ void start_exchange(int sockfd){
 			}
 		}
 		printf("REQUEST: %s\n", request);
+		if(write(sockfd, "ACK", 3) == -1){
+			printf("Errore nella write sulla socket\n");
+	    	return;	
+		}
 
 		if(strncmp(request, "DOWNLOAD", 8) == 0){
 
-			execl("/usr/bin/sshpass", "sshpass", "-p", "root", "/usr/bin/scp", filename, "root@172.17.0.3:/home", (char*)0);
+			char* psw_gm;
+			psw_gm = calloc(500, sizeof(char));
+			if(read(sockfd, psw_gm, 500) == -1){
+				printf("Problemi nella read dalla socket\n");
+            	return;
+			}
+
+			directory = calloc(50, sizeof(char));
+			sprintf(directory, "%s/%s", groupname, filename);
+			pid_t pid = fork();
+			if(pid < 0){
+				printf("errore nella fork");
+			}
+			else if(pid == 0){
+				execl("/usr/bin/sshpass", "sshpass", "-p", psw_gm, "/usr/bin/scp", directory, "root@172.17.0.5:/home", (char*)0);
+			}
 			if(write(sockfd, "DOWNLOAD", 8) == -1){
 				printf("Errore nella write sulla socket\n");
 	    		return;
 			}
+			free(psw_gm);
+			free(directory);
 		}
 		else if(strncmp(request, "UPLOAD", 6) == 0){
+			char* my_psw;
+			my_psw = getenv("PSW");
+			if(write(sockfd, my_psw, strlen(my_psw)) == -1){
+				printf("Errore nella write sulla socket\n");
+	    		return;
+			}
+			read_buffer = calloc(500, sizeof(char));
+			if(read(sockfd, read_buffer, 500) == -1){
+	        	printf("Problema nella read della socket\n");
+	        	exit(EXIT_FAILURE);
+        	}
 			if(write(sockfd, "READY", 5) == -1){
 				printf("Errore nella write sulla socket\n");
 	    		return;
 			}
 		}
-
 		free(filename);
 		free(request);
 	}
