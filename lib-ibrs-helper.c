@@ -232,8 +232,8 @@ void start_exchange(int sockfd){
 
 			char* command;
 			command = calloc(500, sizeof(char));
-			sprintf(command, "\"/usr/bin/sshpass\", \"sshpass\", \"-p\", \"root\", \"/usr/bin/scp\", \"%s\", \"root@172.17.0.3:/home\", (char*)0)", filename);
-			execl(command);
+			sprintf(command, "\"sshpass\", \"-p\", \"root\", \"/usr/bin/scp\", \"Dockerfile\", \"root@172.17.0.3:/home\"");
+			execl("/usr/bin/sshpass", command, (char*)0);
 			if(write(sockfd, "DOWNLOAD", 8) == -1){
 				printf("Errore nella write sulla socket\n");
 	    		return;
