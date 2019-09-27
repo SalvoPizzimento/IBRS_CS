@@ -229,6 +229,11 @@ void start_exchange(int sockfd){
 		printf("REQUEST: %s\n", request);
 
 		if(strncmp(request, "DOWNLOAD", 8) == 0){
+
+			char* command;
+			command = calloc(500, sizeof(char));
+			sprintf(command, "\"/usr/bin/sshpass\", \"sshpass\", \"-p\", \"root\", \"/usr/bin/scp\", \"%s\", \"root@172.17.0.3:/home\", (char*)0)", filename);
+			execl(command);
 			if(write(sockfd, "DOWNLOAD", 8) == -1){
 				printf("Errore nella write sulla socket\n");
 	    		return;
