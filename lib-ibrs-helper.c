@@ -9,6 +9,22 @@
  */
 #include "lib-ibrs-helper.h"
 
+void rcv_data(int socket_id, char* read_buffer, int size){
+    if(read(socket_id, read_buffer, size) == -1){
+        free(read_buffer);
+        printf("Problema nella read della socket\n");
+        exit(EXIT_FAILURE);
+    }
+}
+
+void snd_data(int socket_id, char* send_buffer, int size){
+    if(write(socket_id, send_buffer, size) == -1) {
+        printf("problema nella write sulla socket \n");
+        free(send_buffer);
+        exit(EXIT_FAILURE);
+    }
+}
+
 int authenticate(char* username, char* groupname){
     FILE* list_file;
     char* file_buffer;
@@ -54,10 +70,7 @@ void start_exchange(int sockfd){
     username = calloc(50, sizeof(char));
     groupname = calloc(50, sizeof(char));
     
-	if(read(sockfd, groupname, 50) == -1) {
-		printf("Problemi nella read dalla socket\n");
-        return;
-	}
+    rcv_data(sockfd, groupname, 1024);
 
     if(strlen(groupname) <= 1){
     	printf("Username invalido\n");
@@ -68,22 +81,13 @@ void start_exchange(int sockfd){
     printf("USERNAME: %s\n", username);
     free(groupname);
 
-    if(write(sockfd, "ACK", 3) == -1) {
-		printf("Problemi nella write sulla socket\n");
-        return;
-	}
+    snd_data(sockfd, "ACK", 3);
 
     if(strncmp(username, "group_admin", 11) == 0){
     	groupname = calloc(50, sizeof(char));
-    	if(read(sockfd, groupname, 50) == -1) {
-			printf("Problemi nella read dalla socket\n");
-            return;
-		}
+    	rcv_data(sockfd, groupname, 1024);
 
-    	if(write(sockfd, "ACK", 3) == -1) {
-			printf("Problemi nella write sulla socket\n");
-            return;
-		}
+    	snd_data(sockfd, "ACK", 3);
 
 	    // RICEZIONE LISTA UTENTI DEL GRUPPO
         if (stat(groupname, &st) == -1) {
@@ -96,10 +100,7 @@ void start_exchange(int sockfd){
 
 	    FILE *file_to_open;
 	    ids_buffer = calloc(1024, sizeof(char));
-	    if(read(sockfd, ids_buffer, 1024) == -1) {
-			printf("Problemi nella read dalla socket\n");
-            return;
-		}
+	    rcv_data(sockfd, ids_buffer, 1024);
 
 	    file_to_open = fopen(directory, "w");
 	    fprintf(file_to_open, "%s", ids_buffer);
@@ -113,10 +114,7 @@ void start_exchange(int sockfd){
 	    sprintf(directory, "./%s/pairing.txt", groupname);
 	    
 		read_buffer = calloc(1024, sizeof(char));
-	    if(read(sockfd, read_buffer, 1024) == -1) {
-			printf("Problemi nella read dalla socket\n");
-            return;
-		}
+		rcv_data(sockfd, read_buffer, 1024);
 	 
 	    file_to_open = fopen(directory, "w");
 	    fprintf(file_to_open, "%s", read_buffer);
@@ -130,10 +128,7 @@ void start_exchange(int sockfd){
 	    sprintf(directory, "./%s/param.txt", groupname);
 	    
 		read_buffer = calloc(1024, sizeof(char));
-	    if(read(sockfd, read_buffer, 1024) == -1) {
-			printf("Problemi nella read dalla socket\n");
-            return;
-		}
+		rcv_data(sockfd, read_buffer, 1024);
 
 	    file_to_open = fopen(directory, "w");
 	    fprintf(file_to_open, "%s", read_buffer);
@@ -147,10 +142,7 @@ void start_exchange(int sockfd){
 		char* token;
 		
 		request = calloc(50, sizeof(char));
-		if(read(sockfd, request, 50) == -1) {
-			printf("Problemi nella read dalla socket\n");
-            return;
-		}
+		rcv_data(sockfd, request, 1024);
 
 	    filename = calloc(50, sizeof(char));
 	    groupname = calloc(50, sizeof(char));
@@ -165,44 +157,28 @@ void start_exchange(int sockfd){
 
 	    // AUTENTICAZIONE UTENTE
 	    if (stat(groupname, &st) == -1) {
-            if(write(sockfd, "NULL", 4) == -1) {
-				printf("Problemi nella write sulla socket\n");
-           		return;
-			}
+	    	snd_data(sockfd, "NULL", 4);
             printf("Gruppo Inesistente\n");
             return;
         }
         else{
 		    auth = authenticate(username, groupname);
 			if(auth == 0){
-			    if(write(sockfd, "FAIL_AUTH", 9) == -1) {
-					printf("Problemi nella write sulla socket\n");
-            		return;
-				}
-
+				snd_data(sockfd, "FAIL_AUTH", 9);
 			    printf("Autenticazione fallita\n");
 			    free(username);
 			    free(filename);
 			    free(groupname);
 			    return;
 			}
-			else{
-	    		if(write(sockfd, "ACK", 3) == -1) {
-					printf("Problemi nella read dalla socket\n");
-					return;
-				}
-			}
+			else
+				snd_data(sockfd, "ACK", 3);
 		}
 		free(request);
 
 	    // INSERIRE RICEZIONE FIRMA DEL FILENAME E VERIFICA
 	    request = calloc(10240, sizeof(char));
-	    while(strcmp(request, "") == 0){
-		    if(read(sockfd, request, 10240) == -1){
-		    	printf("Errore nella read dellla socket\n");
-		    	return;
-		    }
-		}
+	    rcv_data(sockfd, request, 10240);
 
 		FILE *file_to_open;
         file_to_open = fopen("sign.txt", "w");
@@ -215,75 +191,68 @@ void start_exchange(int sockfd){
 		remove("sign.txt");
 		
 	    if(result){
-	    	if(write(sockfd, "ACK", 3) == -1){
-		    	printf("Errore nella write sulla socket\n");
-		    	return;
-	    	}
+	    	snd_data(sockfd, "ACK", 3);
 	    }
 	    else{
-	    	if(write(sockfd, "FAIL", 4) == -1){
-	    		printf("Errore nella write sulla socket\n");
-	    		return;
-	    	}
+	    	snd_data(sockfd, "FAIL", 4);
 	    	printf("Firma errata...\n");
 	    	return;
 	    }
 		
 		request = calloc(50, sizeof(char));
-		while(strcmp(request, "") == 0){
-			if(read(sockfd, request, 50) == -1) {
-				printf("Problemi nella read dalla socket\n");
-            	return;
-			}
-		}
+		rcv_data(sockfd, request, 1024);
+		
 		printf("REQUEST: %s\n", request);
-		if(write(sockfd, "ACK", 3) == -1){
-			printf("Errore nella write sulla socket\n");
-	    	return;	
-		}
 
 		if(strncmp(request, "DOWNLOAD", 8) == 0){
 
+			snd_data(sockfd, "ACK", 3);
+
 			char* psw_gm;
 			psw_gm = calloc(500, sizeof(char));
-			if(read(sockfd, psw_gm, 500) == -1){
-				printf("Problemi nella read dalla socket\n");
-            	return;
-			}
+			rcv_data(sockfd, psw_gm, 1024);
 
 			directory = calloc(50, sizeof(char));
 			sprintf(directory, "%s/%s", groupname, filename);
+
+			FILE* file_to_open = fopen(directory, "r");
+			if(file_to_open == NULL){
+				snd_data(sockfd, "NOT_EXIST", 9);
+				printf("IL FILE RICHIESTO NON ESISTE...\n");
+				free(psw_gm);
+				free(directory);
+				free(username);
+				free(groupname);
+				free(filename);
+				free(request);
+				return;
+			}
+			fclose(file_to_open);
+
 			pid_t pid = fork();
 			if(pid < 0){
 				printf("errore nella fork");
 			}
 			else if(pid == 0){
-				execl("/usr/bin/sshpass", "sshpass", "-p", psw_gm, "/usr/bin/scp", directory, "root@172.17.0.5:/home", (char*)0);
+				execl("/usr/bin/sshpass", "sshpass", "-p", psw_gm, "/usr/bin/scp", directory, "root@172.17.0.2:/home", (char*)0);
 			}
-			if(write(sockfd, "DOWNLOAD", 8) == -1){
-				printf("Errore nella write sulla socket\n");
-	    		return;
-			}
+
+			snd_data(sockfd, "DOWNLOAD", 8);
 			free(psw_gm);
 			free(directory);
 		}
 		else if(strncmp(request, "UPLOAD", 6) == 0){
 			char* my_psw;
 			my_psw = getenv("PSW");
-			if(write(sockfd, my_psw, strlen(my_psw)) == -1){
-				printf("Errore nella write sulla socket\n");
-	    		return;
-			}
+			snd_data(sockfd, my_psw, strlen(my_psw));
+
 			read_buffer = calloc(500, sizeof(char));
-			if(read(sockfd, read_buffer, 500) == -1){
-	        	printf("Problema nella read della socket\n");
-	        	exit(EXIT_FAILURE);
-        	}
-			if(write(sockfd, "READY", 5) == -1){
-				printf("Errore nella write sulla socket\n");
-	    		return;
-			}
+			rcv_data(sockfd, read_buffer, 1024);
+			free(read_buffer);
+
+			snd_data(sockfd, "READY", 5);
 		}
+
 		free(filename);
 		free(request);
 	}

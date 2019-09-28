@@ -32,6 +32,7 @@
 #include "lib-ibrs-params.h"
 #include "lib-ibrs-verify.h"
 #include "lib-timing.h"
+#include <ifaddrs.h>
 
 #define PORT 8888 
 #define SA struct sockaddr 
