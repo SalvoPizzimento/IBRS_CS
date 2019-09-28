@@ -22,6 +22,7 @@
 #include "lib-ibrs-params.h"
 #include "lib-ibrs-verify.h"
 #include "lib-timing.h"
+#include <ifaddrs.h>
 
 #define PORT 8888 
 #define SA struct sockaddr 
@@ -32,5 +33,8 @@ void start_exchange(int socket_id);
 void start_connection();
 int authenticate(char* username, char* groupname);
 bool verify(char* groupname, char* filename);
+void rcv_data(int socket_id, char* read_buffer, int size);
+void snd_data(int socket_id, char* send_buffer);
+
 
 #endif /* LIB_IBRS_HELPER_H */
