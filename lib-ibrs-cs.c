@@ -1,5 +1,5 @@
 /** @file lib-ibrs-cs.c
- *  @brief Main file del Cloude Server.
+ *  @brief Main file del Cloud Server.
  *
  *  File contenente le primitive crittografiche 
  *  usate per il funzionamento dello schema IBRS.
