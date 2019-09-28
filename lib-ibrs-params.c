@@ -1,3 +1,12 @@
+/** @file lib-ibrs-params.c
+ *  @brief Parametri per il Cloud Server.
+ *
+ *  File contenente le funzioni per 
+ *  gestire i parametri dello schema IBRS.
+ *
+ *  @author Alessandro Midolo
+ *  @author Salvatore Pizzimento
+ */
 #include "lib-ibrs-params.h"
 
 void load_params(ibrs_public_params_t* public_params, int level, FILE* pairing_stream, FILE* param_stream) {

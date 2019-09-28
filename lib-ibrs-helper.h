@@ -1,3 +1,13 @@
+/** @file lib-ibrs-helper.h
+ *  @brief Prototipi delle funzioni per l'helper del Cloud Server.
+ *
+ *  Contiene i prototipi per l'helper,
+ *  le macro, le costanti e tutte le variabili globali
+ *  utili per il funzionamento.
+ *
+ *  @author Alessandro Midolo
+ *  @author Salvatore Pizzimento
+ */
 #ifndef LIB_IBRS_HELPER_H
 #define LIB_IBRS_HELPER_H
 #define _GNU_SOURCE
@@ -25,12 +35,30 @@
 
 #define PORT 8888 
 #define SA struct sockaddr 
+
 #define prng_sec_level 96
 #define default_sec_level 80
 
-void start_exchange(int socket_id);
+/** @brief Funzione per iniziare la connessione tramite socket.
+ */
 void start_connection();
+
+/** @brief Funzione principale per cominciare uno scambio di dati tramite socket.
+ *  @param socket_id socket con cui cominciare lo scambio
+ */
+void start_exchange(int socket_id);
+
+/** @brief Funzione per autenticare un'identità ad un gruppo.
+ *  @param username identità da autenticare
+ *  @param groupname gruppo su cui autenticare l'identità
+ *  @return 1 se l'autenticazione è avvenuta con successo, 0 altrimenti
+ */
 int authenticate(char* username, char* groupname);
-bool verify(char* groupname, char* filename);
+
+/** @brief Funzione per verificare la firma ricevuta.
+ *  @param groupname gruppo dentro cui è stata creata la firma
+ *  @param filename nome del file su cui è stata creata la firma
+ */
+bool ibrs_verify(char* groupname, char* filename);
 
 #endif /* LIB_IBRS_HELPER_H */

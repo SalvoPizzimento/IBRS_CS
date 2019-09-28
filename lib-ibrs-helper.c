@@ -1,3 +1,12 @@
+/** @file lib-ibrs-helper.c
+ *  @brief Helper per il Cloud Server.
+ *
+ *  Helper contenente le funzioni usate nell'applicazione
+ *  per la comunicazione tra le classi.
+ *
+ *  @author Alessandro Midolo
+ *  @author Salvatore Pizzimento
+ */
 #include "lib-ibrs-helper.h"
 
 int authenticate(char* username, char* groupname){
@@ -202,7 +211,7 @@ void start_exchange(int sockfd){
 	    free(request);
 
 	    bool result;
-	    result = verify(groupname, filename);
+	    result = ibrs_verify(groupname, filename);
 		remove("sign.txt");
 		
 	    if(result){
@@ -336,7 +345,7 @@ void start_connection(){
     close(sockfd);
 }
 
-bool verify(char* groupname, char* filename){
+bool ibrs_verify(char* groupname, char* filename){
 	char* directory;
 
 	srand(time(NULL));

@@ -15,8 +15,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
- * libreria di supporto con varie funzioni:
+/** @file lib-misc.c
+ *  @brief Libreria di supporto.
+ *
+ *  libreria di supporto con varie funzioni:
  * - estrazione seed random dal pool di sistema per i sistemi Linux, Mac OS X e
  *   Windows;
  * - selezione della dimensione di un gruppo finito affinché questo sia sicuro
@@ -24,6 +26,10 @@
  *   (raccomandazioni NIST)
  * - selezione curva/pairing per la libreria PBC secondo il livello di sicurezza
  *   (raccomandazioni NIST)
+ * 
+ *  @author Mario Di Raimondo
+ *  @author Alessandro Midolo
+ *  @author Salvatore Pizzimento
  */
 
 #include "lib-misc.h"

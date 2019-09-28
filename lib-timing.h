@@ -15,6 +15,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/** @file lib-timing.h
+ *  @brief Prototipi della libreria di supporto.
+ *
+ *  Contiene i prototipi della libreria di supporto,
+ *  le macro, le costanti e tutte le variabili globali
+ *  utili per il funzionamento.
+ *
+ *  @author Mario Di Raimondo
+ *  @author Alessandro Midolo
+ *  @author Salvatore Pizzimento
+ */
+
 #ifndef LIB_TIMING_H
 #define LIB_TIMING_H
 

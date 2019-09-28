@@ -15,9 +15,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
+/** @file lib-timing.c
+ *  @brief Libreria di supporto.
+ *
  * libreria per il campionamento preciso del timing attraverso varie chiamate di
  * sistema (POSIX e non) e attraverso l'uso del contatore Intel TSC
+ * 
+ *  @author Mario Di Raimondo
+ *  @author Alessandro Midolo
+ *  @author Salvatore Pizzimento
  */
 
 #include "lib-timing.h"

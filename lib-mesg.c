@@ -15,8 +15,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
- * libreria di supporto per la gestione del messagging a livelli di priorità
+/** @file lib-mesg.c
+ *  @brief Libreria di supporto.
+ *
+ *  libreria di supporto per la gestione del messagging a livelli di priorità
+ *
+ *  @author Mario Di Raimondo
+ *  @author Alessandro Midolo
+ *  @author Salvatore Pizzimento
  */
 
 #include "lib-mesg.h"

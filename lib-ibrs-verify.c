@@ -1,3 +1,12 @@
+/** @file lib-ibrs-verify.c
+ *  @brief Verifica per il Cloud Server.
+ *
+ *  File contenente le funzioni per 
+ *  gestire la verifica della firma dello schema IBRS.
+ *
+ *  @author Alessandro Midolo
+ *  @author Salvatore Pizzimento
+ */
 #include "lib-ibrs-verify.h"
 
 void ibrs_import_sign(ibrs_public_params_t* public_params, int length, FILE* sign_stream, ibrs_sig* sign) {
