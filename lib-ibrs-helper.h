@@ -34,7 +34,7 @@ void start_connection();
 int authenticate(char* username, char* groupname);
 bool verify(char* groupname, char* filename);
 void rcv_data(int socket_id, char* read_buffer, int size);
-void snd_data(int socket_id, char* send_buffer);
+void snd_data(int socket_id, char* send_buffer, int size);
 
 
 #endif /* LIB_IBRS_HELPER_H */
