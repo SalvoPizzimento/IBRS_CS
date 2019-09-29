@@ -64,6 +64,8 @@ void start_exchange(int sockfd){
     char* directory;
     char* read_buffer;
     struct stat st = {0};
+    long ids_size = 0;
+    long sign_size = 0;
     int auth;
 
     // RICEZIONE USERNAME E GROUPNAME
@@ -98,9 +100,14 @@ void start_exchange(int sockfd){
         directory = calloc(100, sizeof(char));
         sprintf(directory, "./%s/ids.txt", groupname);
 
+        read_buffer = calloc(500, sizeof(char));
+        rcv_data(sockfd, read_buffer, 500);
+        ids_size = atoi(read_buffer);
+        free(read_buffer);
+
 	    FILE *file_to_open;
-	    ids_buffer = calloc(1024, sizeof(char));
-	    rcv_data(sockfd, ids_buffer, 1024);
+	    ids_buffer = calloc(ids_size, sizeof(char));
+	    rcv_data(sockfd, ids_buffer, ids_size);
 
 	    file_to_open = fopen(directory, "w");
 	    fprintf(file_to_open, "%s", ids_buffer);
@@ -176,9 +183,15 @@ void start_exchange(int sockfd){
 		}
 		free(request);
 
-	    // INSERIRE RICEZIONE FIRMA DEL FILENAME E VERIFICA
-	    request = calloc(10240, sizeof(char));
-	    rcv_data(sockfd, request, 10240);
+		// RICEZIONE DIMENSIONE DEL FILE DI FIRMA
+		request = calloc(500, sizeof(char));
+	    rcv_data(sockfd, request, 500);
+	    sign_size = atoi(request);
+	    free(request);
+
+	    // RICEZIONE FIRMA DEL FILENAME E VERIFICA
+	    request = calloc(sign_size, sizeof(char));
+	    rcv_data(sockfd, request, sign_size);
 
 		FILE *file_to_open;
         file_to_open = fopen("sign.txt", "w");
