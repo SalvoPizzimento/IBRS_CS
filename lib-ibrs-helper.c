@@ -212,24 +212,19 @@ void start_exchange(int sockfd){
 	    	return;
 	    }
 
-	    char* key_name = getenv("KEY");
-	    directory = calloc(500, sizeof(char));
-	    sprintf(directory, "/home/cs/.ssh/%s", key_name);
+	    FILE* key_file;
+        char* read_buffer;
+        long key_size;
 
-	   	FILE* key_file;
-	   	long key_size;
-	   	char* key_buffer;
-
-	   	key_file = fopen(directory, "r");
-	   	key_size = get_filesize(key_file);
-	   	key_buffer = calloc(key_size, sizeof(char));
-        if(fread(key_buffer, sizeof(char), key_size, key_file) != key_size){
-            printf("problema nella read del file \n");
+        key_file = fopen("KeyPair.pem", "r");
+        key_size = get_filesize(key_file);
+        read_buffer = calloc(key_size, sizeof(char));
+        if(fread(read_buffer, sizeof(char), key_size, key_file) != key_size){
+            printf("problema nella read del file\n");
             exit(EXIT_FAILURE);
         }
-
-        snd_data(sockfd, key_buffer, key_size);
-        fclose(key_file);
+        snd_data(sockfd, read_buffer, strlen(read_buffer));
+        free(read_buffer);
 		
 		request = calloc(50, sizeof(char));
 		rcv_data(sockfd, request, 1024);
@@ -241,34 +236,19 @@ void start_exchange(int sockfd){
 			directory = calloc(50, sizeof(char));
 			sprintf(directory, "s3://ibrsstorage/%s/%s", groupname, filename);
 
-			pid_t pid = fork();
+			/*pid_t pid = fork();
 			if(pid < 0){
 				printf("errore nella fork");
 			}
 			else if(pid == 0){
 				execl("/usr/bin/aws", "s3", "cp", directory, ".", (char*)0);
-				//execl("/usr/bin/sshpass", "sshpass", "-p /usr/bin/scp", directory, "root@172.17.0.2:/home", (char*)0);
-			}
+			}*/
 
-			/*FILE* file_to_open = fopen(directory, "r");
-			if(file_to_open == NULL){
-				snd_data(sockfd, "NOT_EXIST", 9);
-				printf("IL FILE RICHIESTO NON ESISTE...\n");
-				free(directory);
-				free(username);
-				free(groupname);
-				free(filename);
-				free(request);
-				free(key_buffer);
-				return;
-			}
-			fclose(file_to_open);*/
-			
 			snd_data(sockfd, "DOWNLOAD", 8);
 			read_buffer = calloc(1024, sizeof(char));
 			rcv_data(sockfd, read_buffer, 1024);
 			if(strncmp(read_buffer, "ACK", 3) == 0){
-				printf("DOWNLOAD EFFETTUATO...\n");
+				printf("DOWNLOAD EFFETTUATO\n");
 				remove(filename);
 			}
 			free(read_buffer);
@@ -279,20 +259,22 @@ void start_exchange(int sockfd){
 			sprintf(directory, "s3://ibrsstorage/%s", groupname);
 
 			snd_data(sockfd, "READY", 5);
-			read_buffer = calloc(1024, sizeof(char));
-			rcv_data(sockfd, read_buffer, 1024);
+
+			read_buffer = calloc(500, sizeof(char));
+			rcv_data(sockfd, read_buffer, 500);
+
 			if(strncmp(read_buffer, "ACK", 3) == 0){
-				pid_t pid = fork();
+				/*pid_t pid = fork();
 				if(pid < 0){
 					printf("errore nella fork");
 				}
 				else if(pid == 0){
 					execl("/usr/bin/aws", "s3", "cp", filename, directory, (char*)0);
-					remove(filename);
-				}
+				}*/
+				printf("UPLOAD EFFETTUATO...\n");
 			}
-			free(directory);
 			free(read_buffer);
+			free(directory);
 		}
 
 		free(filename);
