@@ -241,7 +241,7 @@ void start_exchange(int sockfd){
 				printf("errore nella fork");
 			}
 			else if(pid == 0){
-				execl("/usr/bin/aws", "s3", "cp", directory, ".", (char*)0);
+				execl("/usr/bin/aws", "aws", "s3", "cp", directory, ".", (char*)0);
 			}*/
 
 			snd_data(sockfd, "DOWNLOAD", 8);
@@ -269,7 +269,7 @@ void start_exchange(int sockfd){
 					printf("errore nella fork");
 				}
 				else if(pid == 0){
-					execl("/usr/bin/aws", "s3", "cp", filename, directory, (char*)0);
+					execl("/usr/bin/aws", "aws", "s3", "cp", filename, directory, (char*)0);
 				}*/
 				printf("UPLOAD EFFETTUATO...\n");
 			}
