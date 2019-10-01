@@ -33,6 +33,7 @@
 #include "lib-ibrs-verify.h"
 #include "lib-timing.h"
 #include <ifaddrs.h>
+#include <sys/wait.h>
 
 #define PORT 8888 
 #define SA struct sockaddr 

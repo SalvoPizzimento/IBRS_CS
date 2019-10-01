@@ -179,14 +179,17 @@ void start_exchange(int sockfd){
 			    free(groupname);
 			    return;
 			}
-			else
+			else{
 				snd_data(sockfd, "ACK", 3);
+				printf("AUTENTICAZIONE EFFETTUATA\n");
+			}
 		}
 		free(request);
 
 		// RICEZIONE DIMENSIONE DEL FILE DI FIRMA
 		request = calloc(500, sizeof(char));
 	    rcv_data(sockfd, request, 500);
+		printf("RICEZIONE SIZE FIRMA\n");
 	    sign_size = atoi(request);
 	    free(request);
 
@@ -200,14 +203,17 @@ void start_exchange(int sockfd){
 	    	offset += sprintf(file_buffer+offset, "%s", request);
 	    	free(request);
 	    }
+		printf("RICEVUTA FIRMA\n");
 
 		FILE *file_to_open;
         file_to_open = fopen("sign.txt", "w");
         fprintf(file_to_open, "%s", file_buffer);
+	printf("SIGN.TXT CREATO\n");
         fclose(file_to_open);
         free(file_buffer);
 
 	    bool result;
+		printf("PRIMA DI VERIFY");
 	    result = ibrs_verify(groupname, filename);
 		remove("sign.txt");
 		
@@ -219,11 +225,11 @@ void start_exchange(int sockfd){
 	    	printf("Firma errata...\n");
 	    	return;
 	    }
-
+/*
 	    FILE* key_file;
         char* read_buffer;
         long key_size;
-        int offset = 0;
+        offset = 0;
 
         key_file = fopen("KeyPair.pem", "r");
         key_size = get_filesize(key_file);
@@ -238,7 +244,7 @@ void start_exchange(int sockfd){
 	        free(read_buffer);
 	        offset = 1024;
 	    }
-		
+*/		
 		request = calloc(50, sizeof(char));
 		rcv_data(sockfd, request, 1024);
 		
@@ -249,27 +255,31 @@ void start_exchange(int sockfd){
 			directory = calloc(50, sizeof(char));
 			sprintf(directory, "s3://ibrsstorage/%s/%s", groupname, filename);
 
-			/*pid_t pid = fork();
+			pid_t pid = fork();
 			if(pid < 0){
 				printf("errore nella fork");
 			}
 			else if(pid == 0){
-				execl("/usr/bin/aws", "aws", "s3", "cp", directory, ".", (char*)0);
-			}*/
+				execl("/usr/bin/aws", "aws", "s3", "cp", directory, "/home/ubuntu/", (char*)0);
+			}
+			wait(&pid);
 
 			snd_data(sockfd, "DOWNLOAD", 8);
 			read_buffer = calloc(1024, sizeof(char));
 			rcv_data(sockfd, read_buffer, 1024);
 			if(strncmp(read_buffer, "ACK", 3) == 0){
 				printf("DOWNLOAD EFFETTUATO\n");
-				remove(filename);
+				//remove(filename);
 			}
 			free(read_buffer);
 			free(directory);
 		}
 		else if(strncmp(request, "UPLOAD", 6) == 0){
 			directory = calloc(50, sizeof(char));
-			sprintf(directory, "s3://ibrsstorage/%s", groupname);
+			sprintf(directory, "s3://ibrsstorage/%s/", groupname);
+			char* tmp;
+			tmp = calloc(50, sizeof(char));
+			sprintf(tmp, "/home/ubuntu/%s", filename);
 
 			snd_data(sockfd, "READY", 5);
 
@@ -277,16 +287,18 @@ void start_exchange(int sockfd){
 			rcv_data(sockfd, read_buffer, 500);
 
 			if(strncmp(read_buffer, "ACK", 3) == 0){
-				/*pid_t pid = fork();
+				pid_t pid = fork();
 				if(pid < 0){
 					printf("errore nella fork");
 				}
 				else if(pid == 0){
-					execl("/usr/bin/aws", "aws", "s3", "cp", filename, directory, (char*)0);
-				}*/
+					execl("/usr/bin/aws", "aws", "s3", "mv", tmp, directory, (char*)0);
+				}
+				wait(&pid);
 				printf("UPLOAD EFFETTUATO...\n");
 			}
 			free(read_buffer);
+			free(tmp);
 			free(directory);
 		}
 
@@ -418,9 +430,9 @@ bool ibrs_verify(char* groupname, char* filename){
 
   	bool result;	
 	ibrs_sig sign;
-	
+
 	ibrs_import_sign(&public_params, ids.size, sign_stream, &sign);
     result = ibrs_sign_ver(&public_params, ids, (uint8_t *)filename, &sign);
-    
+
 	return result;
 }
