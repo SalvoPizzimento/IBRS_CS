@@ -223,16 +223,21 @@ void start_exchange(int sockfd){
 	    FILE* key_file;
         char* read_buffer;
         long key_size;
+        int offset = 0;
 
         key_file = fopen("KeyPair.pem", "r");
         key_size = get_filesize(key_file);
-        read_buffer = calloc(key_size, sizeof(char));
-        if(fread(read_buffer, sizeof(char), key_size, key_file) != key_size){
-            printf("problema nella read del file\n");
-            exit(EXIT_FAILURE);
-        }
-        snd_data(sockfd, read_buffer, strlen(read_buffer));
-        free(read_buffer);
+        for(int i=0; i<2; i++){
+        	fseek(key_file, offset, SEEK_SET);
+	        read_buffer = calloc(1024, sizeof(char));
+	        if(fread(read_buffer, sizeof(char), 1024, key_file) > 1024){
+	            printf("problema nella read del file\n");
+	            exit(EXIT_FAILURE);
+	        }
+	        snd_data(sockfd, read_buffer, 1024);
+	        free(read_buffer);
+	        offset = 1024;
+	    }
 		
 		request = calloc(50, sizeof(char));
 		rcv_data(sockfd, request, 1024);
