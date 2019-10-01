@@ -168,7 +168,6 @@ void start_exchange(int sockfd){
 
 		printf("GROUPNAME: %s  FILENAME: %s\n", groupname, filename);
 		free(request);
-		free(token);
 
 	    // AUTENTICAZIONE UTENTE
 	    if (stat(groupname, &st) == -1) {
@@ -222,7 +221,6 @@ void start_exchange(int sockfd){
         free(file_buffer);
 
 	    bool result;
-		printf("PRIMA DI VERIFY");
 	    result = ibrs_verify(groupname, filename);
 		remove("sign.txt");
 		
@@ -319,15 +317,12 @@ void start_exchange(int sockfd){
 		}
 		else{
 			free(request);
-			free(username);
-			free(groupname);
-			free(filename);
 		}
+		free(filename);
 	}
 
 	free(username);
 	free(groupname);
-	free(filename);
 }
 
 void start_connection(){
