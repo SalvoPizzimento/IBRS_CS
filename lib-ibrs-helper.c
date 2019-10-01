@@ -63,6 +63,7 @@ void start_exchange(int sockfd){
     char* filename;
     char* directory;
     char* read_buffer;
+    char* file_buffer;
     struct stat st = {0};
     long ids_size = 0;
     long sign_size = 0;
@@ -190,14 +191,21 @@ void start_exchange(int sockfd){
 	    free(request);
 
 	    // RICEZIONE FIRMA DEL FILENAME E VERIFICA
-	    request = calloc(sign_size, sizeof(char));
-	    rcv_data(sockfd, request, sign_size);
+	    file_buffer = calloc(sign_size, sizeof(char));
+	    int offset = 0;
+
+	    while(strlen(file_buffer) < sign_size){
+	    	request = calloc(1024, sizeof(char));
+	    	rcv_data(sockfd, request, 1024);
+	    	offset += sprintf(file_buffer+offset, "%s", request);
+	    	free(request);
+	    }
 
 		FILE *file_to_open;
         file_to_open = fopen("sign.txt", "w");
-        fprintf(file_to_open, "%s", request);
+        fprintf(file_to_open, "%s", file_buffer);
         fclose(file_to_open);
-	    free(request);
+        free(file_buffer);
 
 	    bool result;
 	    result = ibrs_verify(groupname, filename);
