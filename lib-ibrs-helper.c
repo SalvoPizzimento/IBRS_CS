@@ -41,6 +41,7 @@ int authenticate(char* username, char* groupname){
         printf("problema nella read del file %s\n", directory);
         exit(EXIT_FAILURE);
     }
+    fclose(list_file);
 	free(directory);
 
     char* token;
@@ -48,11 +49,13 @@ int authenticate(char* username, char* groupname){
     while(token != NULL){
         if(strncmp(token, username, strlen(username)) == 0){
             printf("Autenticazione eseguita con successo\n");
+			free(file_buffer);
             return 1;
         }
         token = strtok(NULL, "\n");
     }
 	
+	free(file_buffer);
     return 0;
 }
 
@@ -77,6 +80,8 @@ void start_exchange(int sockfd){
 
     if(strlen(groupname) <= 1){
     	printf("Username invalido\n");
+    	free(username);
+    	free(groupname);
     	return;
     }
     
@@ -162,11 +167,16 @@ void start_exchange(int sockfd){
 	    strncpy(filename, token, strlen(token));
 
 		printf("GROUPNAME: %s  FILENAME: %s\n", groupname, filename);
+		free(request);
+		free(token);
 
 	    // AUTENTICAZIONE UTENTE
 	    if (stat(groupname, &st) == -1) {
 	    	snd_data(sockfd, "NULL", 4);
             printf("Gruppo Inesistente\n");
+            free(username);
+            free(groupname);
+            free(filename);
             return;
         }
         else{
@@ -184,7 +194,6 @@ void start_exchange(int sockfd){
 				printf("AUTENTICAZIONE EFFETTUATA\n");
 			}
 		}
-		free(request);
 
 		// RICEZIONE DIMENSIONE DEL FILE DI FIRMA
 		request = calloc(500, sizeof(char));
@@ -223,6 +232,9 @@ void start_exchange(int sockfd){
 	    else{
 	    	snd_data(sockfd, "FAIL", 4);
 	    	printf("Firma errata...\n");
+	    	free(username);
+	    	free(groupname);
+	    	free(filename);
 	    	return;
 	    }
 /*
@@ -252,6 +264,8 @@ void start_exchange(int sockfd){
 
 		if(strncmp(request, "DOWNLOAD", 8) == 0){
 
+			free(request);
+
 			directory = calloc(50, sizeof(char));
 			sprintf(directory, "s3://ibrsstorage/%s/%s", groupname, filename);
 
@@ -275,6 +289,8 @@ void start_exchange(int sockfd){
 			free(directory);
 		}
 		else if(strncmp(request, "UPLOAD", 6) == 0){
+
+			free(request);
 			directory = calloc(50, sizeof(char));
 			sprintf(directory, "s3://ibrsstorage/%s/", groupname);
 			char* tmp;
@@ -301,13 +317,17 @@ void start_exchange(int sockfd){
 			free(tmp);
 			free(directory);
 		}
-
-		free(filename);
-		free(request);
+		else{
+			free(request);
+			free(username);
+			free(groupname);
+			free(filename);
+		}
 	}
 
 	free(username);
 	free(groupname);
+	free(filename);
 }
 
 void start_connection(){
