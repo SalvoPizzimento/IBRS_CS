@@ -296,10 +296,8 @@ void start_exchange(int sockfd){
         free(file_buffer);
 
 	    bool result;
-		printf("prima ver\n");
 	    result = ibrs_verify(groupname, filename);
 		remove("sign.txt");
-		printf("dopo ver\n");
 		
 	    if(result){
 	    	if(snd_data(sockfd, "ACK", 3) == 0){
