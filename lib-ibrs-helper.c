@@ -9,20 +9,22 @@
  */
 #include "lib-ibrs-helper.h"
 
-void rcv_data(int socket_id, char* read_buffer, int size){
+int rcv_data(int socket_id, char* read_buffer, int size){
     if(read(socket_id, read_buffer, size) == -1){
         free(read_buffer);
         printf("Problema nella read della socket\n");
-        exit(EXIT_FAILURE);
+        return 0;
     }
+    return 1;
 }
 
-void snd_data(int socket_id, char* send_buffer, int size){
+int snd_data(int socket_id, char* send_buffer, int size){
     if(write(socket_id, send_buffer, size) == -1) {
         printf("problema nella write sulla socket \n");
         free(send_buffer);
-        exit(EXIT_FAILURE);
+        return 0;
     }
+    return 1;
 }
 
 int authenticate(char* username, char* groupname){
@@ -39,7 +41,7 @@ int authenticate(char* username, char* groupname){
     file_buffer = calloc(file_size, sizeof(char));
     if(fread(file_buffer, sizeof(char), file_size, list_file) != file_size){
         printf("problema nella read del file %s\n", directory);
-        exit(EXIT_FAILURE);
+        return 0;
     }
     fclose(list_file);
 	free(directory);
@@ -76,7 +78,11 @@ void start_exchange(int sockfd){
     username = calloc(50, sizeof(char));
     groupname = calloc(50, sizeof(char));
     
-    rcv_data(sockfd, groupname, 1024);
+    if(rcv_data(sockfd, groupname, 1024) == 0){
+    	free(username);
+    	free(groupname);
+    	return;
+    }
 
     if(strlen(groupname) <= 1){
     	printf("Username invalido\n");
@@ -89,13 +95,25 @@ void start_exchange(int sockfd){
     printf("USERNAME: %s\n", username);
     free(groupname);
 
-    snd_data(sockfd, "ACK", 3);
+    if(snd_data(sockfd, "ACK", 3) == 0){
+    	free(username);
+    	return;
+    }
 
+    // COMUNICAZIONE CON IL GROUP ADMIN
     if(strncmp(username, "group_admin", 11) == 0){
     	groupname = calloc(50, sizeof(char));
-    	rcv_data(sockfd, groupname, 1024);
+    	if(rcv_data(sockfd, groupname, 1024) == 0){
+    		free(username);
+    		free(groupname);
+    		return;
+    	}
 
-    	snd_data(sockfd, "ACK", 3);
+    	if(snd_data(sockfd, "ACK", 3) == 0){
+    		free(username);
+    		free(groupname);
+    		return;
+    	}
 
 	    // RICEZIONE LISTA UTENTI DEL GRUPPO
         if (stat(groupname, &st) == -1) {
@@ -107,13 +125,25 @@ void start_exchange(int sockfd){
         sprintf(directory, "./%s/ids.txt", groupname);
 
         read_buffer = calloc(500, sizeof(char));
-        rcv_data(sockfd, read_buffer, 500);
+        if(rcv_data(sockfd, read_buffer, 500) == 0){
+        	free(read_buffer);
+        	free(username);
+        	free(groupname);
+        	free(directory);
+       		return;
+        }
         ids_size = atoi(read_buffer);
         free(read_buffer);
 
 	    FILE *file_to_open;
 	    ids_buffer = calloc(ids_size, sizeof(char));
-	    rcv_data(sockfd, ids_buffer, ids_size);
+	    if(rcv_data(sockfd, ids_buffer, ids_size) == 0){
+	    	free(ids_buffer);
+	    	free(username);
+        	free(groupname);
+        	free(directory);
+    		return;
+	    }
 
 	    file_to_open = fopen(directory, "w");
 	    fprintf(file_to_open, "%s", ids_buffer);
@@ -127,7 +157,13 @@ void start_exchange(int sockfd){
 	    sprintf(directory, "./%s/pairing.txt", groupname);
 	    
 		read_buffer = calloc(1024, sizeof(char));
-		rcv_data(sockfd, read_buffer, 1024);
+		if(rcv_data(sockfd, read_buffer, 1024) == 0){
+			free(read_buffer);
+			free(username);
+			free(groupname);
+			free(directory);
+			return;
+		}
 	 
 	    file_to_open = fopen(directory, "w");
 	    fprintf(file_to_open, "%s", read_buffer);
@@ -141,7 +177,13 @@ void start_exchange(int sockfd){
 	    sprintf(directory, "./%s/param.txt", groupname);
 	    
 		read_buffer = calloc(1024, sizeof(char));
-		rcv_data(sockfd, read_buffer, 1024);
+		if(rcv_data(sockfd, read_buffer, 1024) == 0){
+			free(read_buffer);
+			free(username);
+			free(groupname);
+			free(directory);
+			return;
+		}
 
 	    file_to_open = fopen(directory, "w");
 	    fprintf(file_to_open, "%s", read_buffer);
@@ -150,12 +192,17 @@ void start_exchange(int sockfd){
 	    free(read_buffer);
 	    free(directory);
 	}
+	// COMUNICAZIONE CON IL GROUP MEMBER
 	else{
 		char* request;
 		char* token;
 		
 		request = calloc(50, sizeof(char));
-		rcv_data(sockfd, request, 1024);
+		if(rcv_data(sockfd, request, 1024) == 0){
+			free(request);
+			free(username);
+			return;
+		}
 
 	    filename = calloc(50, sizeof(char));
 	    groupname = calloc(50, sizeof(char));
@@ -171,7 +218,12 @@ void start_exchange(int sockfd){
 
 	    // AUTENTICAZIONE UTENTE
 	    if (stat(groupname, &st) == -1) {
-	    	snd_data(sockfd, "NULL", 4);
+	    	if(snd_data(sockfd, "NULL", 4) == 0){
+	    		free(username);
+	    		free(groupname);
+	    		free(filename);
+	    		return;
+	    	}
             printf("Gruppo Inesistente\n");
             free(username);
             free(groupname);
@@ -181,7 +233,12 @@ void start_exchange(int sockfd){
         else{
 		    auth = authenticate(username, groupname);
 			if(auth == 0){
-				snd_data(sockfd, "FAIL_AUTH", 9);
+				if(snd_data(sockfd, "FAIL_AUTH", 9) == 0){
+					free(username);
+				    free(filename);
+				    free(groupname);
+					return;
+				}
 			    printf("Autenticazione fallita\n");
 			    free(username);
 			    free(filename);
@@ -189,14 +246,25 @@ void start_exchange(int sockfd){
 			    return;
 			}
 			else{
-				snd_data(sockfd, "ACK", 3);
+				if(snd_data(sockfd, "ACK", 3) == 0){
+					free(username);
+				    free(filename);
+				    free(groupname);
+					return;
+				}
 				printf("AUTENTICAZIONE EFFETTUATA\n");
 			}
 		}
 
 		// RICEZIONE DIMENSIONE DEL FILE DI FIRMA
 		request = calloc(500, sizeof(char));
-	    rcv_data(sockfd, request, 500);
+	    if(rcv_data(sockfd, request, 500) == 0){
+	    	free(request);
+	    	free(username);
+		    free(filename);
+		    free(groupname);
+    		return;
+	    }
 		printf("RICEZIONE SIZE FIRMA\n");
 	    sign_size = atoi(request);
 	    free(request);
@@ -207,7 +275,14 @@ void start_exchange(int sockfd){
 
 	    while(strlen(file_buffer) < sign_size){
 	    	request = calloc(1024, sizeof(char));
-	    	rcv_data(sockfd, request, 1024);
+	    	if(rcv_data(sockfd, request, 1024) == 0){
+	    		free(request);
+	    		free(file_buffer);
+		    	free(username);
+			    free(filename);
+			    free(groupname);
+	   			return;
+	    	}
 	    	offset += sprintf(file_buffer+offset, "%s", request);
 	    	free(request);
 	    }
@@ -216,7 +291,7 @@ void start_exchange(int sockfd){
 		FILE *file_to_open;
         file_to_open = fopen("sign.txt", "w");
         fprintf(file_to_open, "%s", file_buffer);
-	printf("SIGN.TXT CREATO\n");
+		printf("SIGN.TXT CREATO\n");
         fclose(file_to_open);
         free(file_buffer);
 
@@ -225,38 +300,64 @@ void start_exchange(int sockfd){
 		remove("sign.txt");
 		
 	    if(result){
-	    	snd_data(sockfd, "ACK", 3);
+	    	if(snd_data(sockfd, "ACK", 3) == 0){
+	    		free(username);
+		    	free(groupname);
+		    	free(filename);
+	    		return;
+	    	}
 	    }
 	    else{
-	    	snd_data(sockfd, "FAIL", 4);
+	    	if(snd_data(sockfd, "FAIL", 4) == 0){
+	    		free(username);
+		    	free(groupname);
+		    	free(filename);
+	    		return;
+	    	}
 	    	printf("Firma errata...\n");
 	    	free(username);
 	    	free(groupname);
 	    	free(filename);
 	    	return;
 	    }
-/*
+
 	    FILE* key_file;
         char* read_buffer;
-        long key_size;
         offset = 0;
 
         key_file = fopen("KeyPair.pem", "r");
-        key_size = get_filesize(key_file);
         for(int i=0; i<2; i++){
         	fseek(key_file, offset, SEEK_SET);
 	        read_buffer = calloc(1024, sizeof(char));
 	        if(fread(read_buffer, sizeof(char), 1024, key_file) > 1024){
 	            printf("problema nella read del file\n");
-	            exit(EXIT_FAILURE);
+	            fclose(key_file);
+	            free(read_buffer);
+	            free(username);
+		    	free(groupname);
+		    	free(filename);
+	            return;
 	        }
-	        snd_data(sockfd, read_buffer, 1024);
+	        fclose(key_file);
+	        if(snd_data(sockfd, read_buffer, 1024) == 0){
+	        	free(read_buffer);
+	            free(username);
+		    	free(groupname);
+		    	free(filename);
+	        	return;
+	        }
 	        free(read_buffer);
 	        offset = 1024;
 	    }
-*/		
+	
 		request = calloc(50, sizeof(char));
-		rcv_data(sockfd, request, 1024);
+		if(rcv_data(sockfd, request, 1024) == 0){
+			free(request);
+            free(username);
+	    	free(groupname);
+	    	free(filename);
+			return;
+		}
 		
 		printf("REQUEST: %s\n", request);
 
@@ -276,9 +377,22 @@ void start_exchange(int sockfd){
 			}
 			wait(&pid);
 
-			snd_data(sockfd, "DOWNLOAD", 8);
+			if(snd_data(sockfd, "DOWNLOAD", 8) == 0){
+				free(username);
+		    	free(groupname);
+		    	free(filename);
+		    	free(directory);
+				return;
+			}
 			read_buffer = calloc(1024, sizeof(char));
-			rcv_data(sockfd, read_buffer, 1024);
+			if(rcv_data(sockfd, read_buffer, 1024) == 0){
+				free(username);
+		    	free(groupname);
+		    	free(filename);
+		    	free(directory);
+		    	free(read_buffer);
+				return;
+			}
 			if(strncmp(read_buffer, "ACK", 3) == 0){
 				printf("DOWNLOAD EFFETTUATO\n");
 				//remove(filename);
@@ -295,10 +409,25 @@ void start_exchange(int sockfd){
 			tmp = calloc(50, sizeof(char));
 			sprintf(tmp, "/home/ubuntu/%s", filename);
 
-			snd_data(sockfd, "READY", 5);
+			if(snd_data(sockfd, "READY", 5) == 0){
+				free(username);
+		    	free(groupname);
+		    	free(filename);
+		    	free(directory);
+		    	free(tmp);
+				return;
+			}
 
 			read_buffer = calloc(500, sizeof(char));
-			rcv_data(sockfd, read_buffer, 500);
+			if(rcv_data(sockfd, read_buffer, 500) == 0){
+				free(username);
+		    	free(groupname);
+		    	free(filename);
+		    	free(directory);
+		    	free(tmp);
+		    	free(read_buffer);
+				return;
+			}
 
 			if(strncmp(read_buffer, "ACK", 3) == 0){
 				pid_t pid = fork();
@@ -333,7 +462,7 @@ void start_connection(){
     sockfd = socket(AF_INET, SOCK_STREAM, 0); 
     if (sockfd == -1) { 
         printf("socket creation failed...\n"); 
-        exit(0); 
+        return;
     } 
     else
         printf("Socket successfully created..\n"); 
@@ -346,8 +475,9 @@ void start_connection(){
   
     // Binding newly created socket to given IP and verification 
     if ((bind(sockfd, (SA*)&servaddr, sizeof(servaddr))) != 0) { 
-        printf("socket bind failed...\n"); 
-        exit(0); 
+        printf("socket bind failed...\n");
+        close(sockfd);
+        return;
     }
     else{
         printf("Socket successfully binded..\n"); 
@@ -357,7 +487,7 @@ void start_connection(){
 	    // Now server is ready to listen and verification 
 	    if ((listen(sockfd, 5)) != 0) { 
 	        printf("Listen failed...\n"); 
-	        exit(0); 
+	        break; 
 	    } 
 	    else
 	        printf("Server listening..\n"); 
@@ -367,7 +497,7 @@ void start_connection(){
 	    connfd = accept(sockfd, (SA*)&cli, (socklen_t*)&len); 
 	    if (connfd < 0) { 
 	        printf("server acccept failed...\n"); 
-	        exit(0); 
+	        break; 
 	    } 
 	    else
 	        printf("server acccept the client...\n"); 
