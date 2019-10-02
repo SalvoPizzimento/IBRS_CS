@@ -1,0 +1,68 @@
+\hypertarget{IBRS__CS_2lib-ibrs-params_8c}{}\doxysection{I\+B\+R\+S\+\_\+\+C\+S/lib-\/ibrs-\/params.c File Reference}
+\label{IBRS__CS_2lib-ibrs-params_8c}\index{IBRS\_CS/lib-\/ibrs-\/params.c@{IBRS\_CS/lib-\/ibrs-\/params.c}}
+
+
+Parametri per il Cloud Server.  
+
+
+{\ttfamily \#include \char`\"{}lib-\/ibrs-\/params.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{IBRS__CS_2lib-ibrs-params_8c_af90904db6e097bfeebe68330fa2549dd}{load\+\_\+params}} (\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$public\+\_\+params, int level, F\+I\+LE $\ast$pairing\+\_\+stream, F\+I\+LE $\ast$param\+\_\+stream)
+\begin{DoxyCompactList}\small\item\em Funzione per caricare i parametri dello schema da un file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{IBRS__CS_2lib-ibrs-params_8c_acf21ba6f1c941a4a4b1c1fa130e5cd26}{ibrs\+\_\+public\+\_\+params\+\_\+clear}} (\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$public\+\_\+params)
+\begin{DoxyCompactList}\small\item\em Funzione per liberare la struttura parametri. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Parametri per il Cloud Server. 
+
+File contenente le funzioni per gestire i parametri dello schema I\+B\+RS.
+
+\begin{DoxyAuthor}{Author}
+Alessandro Midolo 
+
+Salvatore Pizzimento 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{IBRS__CS_2lib-ibrs-params_8c_acf21ba6f1c941a4a4b1c1fa130e5cd26}\label{IBRS__CS_2lib-ibrs-params_8c_acf21ba6f1c941a4a4b1c1fa130e5cd26}} 
+\index{lib-\/ibrs-\/params.c@{lib-\/ibrs-\/params.c}!ibrs\_public\_params\_clear@{ibrs\_public\_params\_clear}}
+\index{ibrs\_public\_params\_clear@{ibrs\_public\_params\_clear}!lib-\/ibrs-\/params.c@{lib-\/ibrs-\/params.c}}
+\doxysubsubsection{\texorpdfstring{ibrs\_public\_params\_clear()}{ibrs\_public\_params\_clear()}}
+{\footnotesize\ttfamily void ibrs\+\_\+public\+\_\+params\+\_\+clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$}]{public\+\_\+params }\end{DoxyParamCaption})}
+
+
+
+Funzione per liberare la struttura parametri. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em public\+\_\+params} & parametri pubblici da liberare \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{IBRS__CS_2lib-ibrs-params_8c_af90904db6e097bfeebe68330fa2549dd}\label{IBRS__CS_2lib-ibrs-params_8c_af90904db6e097bfeebe68330fa2549dd}} 
+\index{lib-\/ibrs-\/params.c@{lib-\/ibrs-\/params.c}!load\_params@{load\_params}}
+\index{load\_params@{load\_params}!lib-\/ibrs-\/params.c@{lib-\/ibrs-\/params.c}}
+\doxysubsubsection{\texorpdfstring{load\_params()}{load\_params()}}
+{\footnotesize\ttfamily void load\+\_\+params (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$}]{public\+\_\+params,  }\item[{int}]{level,  }\item[{F\+I\+LE $\ast$}]{pairing\+\_\+stream,  }\item[{F\+I\+LE $\ast$}]{param\+\_\+stream }\end{DoxyParamCaption})}
+
+
+
+Funzione per caricare i parametri dello schema da un file. 
+
+Funzione per caricare i soli parametri pubblici dello schema da un file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em public\+\_\+params} & parametri pubblici per lo schema crittografico \\
+\hline
+{\em level} & livello di sicurezza crittografica \\
+\hline
+{\em pairing\+\_\+stream} & file stream da cui caricare il pairing \\
+\hline
+{\em param\+\_\+stream} & file stream da cui caricare i parametri \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,69 @@
+\hypertarget{IBRS__GM_2lib-ibrs-verify_8h}{}\doxysection{I\+B\+R\+S\+\_\+\+G\+M/lib-\/ibrs-\/verify.h File Reference}
+\label{IBRS__GM_2lib-ibrs-verify_8h}\index{IBRS\_GM/lib-\/ibrs-\/verify.h@{IBRS\_GM/lib-\/ibrs-\/verify.h}}
+
+
+Prototipi della verifica del Group Member.  
+
+
+{\ttfamily \#include \char`\"{}lib-\/ibrs-\/gm.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{IBRS__GM_2lib-ibrs-verify_8h_a62d5256d09de15ec6b8fc5f6244f1fa1}{ibrs\+\_\+sign\+\_\+ver}} (\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$public\+\_\+params, \mbox{\hyperlink{structarray__ibrs}{array\+\_\+ibrs}} l, const uint8\+\_\+t $\ast$msg, \mbox{\hyperlink{structibrs__sig}{ibrs\+\_\+sig}} $\ast$sign)
+\begin{DoxyCompactList}\small\item\em Funzione per verifica la correttezza della firma. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{IBRS__GM_2lib-ibrs-verify_8h_a1751ee69c673be8b905d141ba8c56ac9}{ibrs\+\_\+sign\+\_\+clear}} (\mbox{\hyperlink{structibrs__sig}{ibrs\+\_\+sig}} $\ast$sig)
+\begin{DoxyCompactList}\small\item\em Funzione per liberare la struttura firma. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Prototipi della verifica del Group Member. 
+
+Contiene i prototipi per la verifica, le macro, le costanti e tutte le variabili globali utili per il funzionamento.
+
+\begin{DoxyAuthor}{Author}
+Alessandro Midolo 
+
+Salvatore Pizzimento 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{IBRS__GM_2lib-ibrs-verify_8h_a1751ee69c673be8b905d141ba8c56ac9}\label{IBRS__GM_2lib-ibrs-verify_8h_a1751ee69c673be8b905d141ba8c56ac9}} 
+\index{lib-\/ibrs-\/verify.h@{lib-\/ibrs-\/verify.h}!ibrs\_sign\_clear@{ibrs\_sign\_clear}}
+\index{ibrs\_sign\_clear@{ibrs\_sign\_clear}!lib-\/ibrs-\/verify.h@{lib-\/ibrs-\/verify.h}}
+\doxysubsubsection{\texorpdfstring{ibrs\_sign\_clear()}{ibrs\_sign\_clear()}}
+{\footnotesize\ttfamily void ibrs\+\_\+sign\+\_\+clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structibrs__sig}{ibrs\+\_\+sig}} $\ast$}]{sig }\end{DoxyParamCaption})}
+
+
+
+Funzione per liberare la struttura firma. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sig} & firma da liberare \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{IBRS__GM_2lib-ibrs-verify_8h_a62d5256d09de15ec6b8fc5f6244f1fa1}\label{IBRS__GM_2lib-ibrs-verify_8h_a62d5256d09de15ec6b8fc5f6244f1fa1}} 
+\index{lib-\/ibrs-\/verify.h@{lib-\/ibrs-\/verify.h}!ibrs\_sign\_ver@{ibrs\_sign\_ver}}
+\index{ibrs\_sign\_ver@{ibrs\_sign\_ver}!lib-\/ibrs-\/verify.h@{lib-\/ibrs-\/verify.h}}
+\doxysubsubsection{\texorpdfstring{ibrs\_sign\_ver()}{ibrs\_sign\_ver()}}
+{\footnotesize\ttfamily bool ibrs\+\_\+sign\+\_\+ver (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$}]{public\+\_\+params,  }\item[{\mbox{\hyperlink{structarray__ibrs}{array\+\_\+ibrs}}}]{l,  }\item[{const uint8\+\_\+t $\ast$}]{msg,  }\item[{\mbox{\hyperlink{structibrs__sig}{ibrs\+\_\+sig}} $\ast$}]{sign }\end{DoxyParamCaption})}
+
+
+
+Funzione per verifica la correttezza della firma. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em public\+\_\+params} & parametri pubblici per lo schema crittografico \\
+\hline
+{\em l} & insieme delle identità che partecipano alla firma \\
+\hline
+{\em msg} & messaggio su cui verificare la firma \\
+\hline
+{\em sign} & firma da verificare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se la firma è valida, false altrimenti 
+\end{DoxyReturn}

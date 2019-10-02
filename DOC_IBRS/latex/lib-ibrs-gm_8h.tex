@@ -1,0 +1,192 @@
+\hypertarget{lib-ibrs-gm_8h}{}\doxysection{I\+B\+R\+S\+\_\+\+G\+M/lib-\/ibrs-\/gm.h File Reference}
+\label{lib-ibrs-gm_8h}\index{IBRS\_GM/lib-\/ibrs-\/gm.h@{IBRS\_GM/lib-\/ibrs-\/gm.h}}
+
+
+Prototipi delle primitive crittografiche del Group Member.  
+
+
+{\ttfamily \#include \char`\"{}lib-\/misc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lib-\/mesg.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$nettle/sha2.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Struttura per i parametri pubblici. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structibrs__secret__param__t}{ibrs\+\_\+secret\+\_\+param\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Struttura per il parametro segreto. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structarray__ibrs}{array\+\_\+ibrs}}
+\begin{DoxyCompactList}\small\item\em Struttura per l\textquotesingle{}array di identità \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structarray__element__t__ibrs}{array\+\_\+element\+\_\+t\+\_\+ibrs}}
+\begin{DoxyCompactList}\small\item\em Struttura per l\textquotesingle{}array di oggetti element\+\_\+t. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structibrs__key__pair}{ibrs\+\_\+key\+\_\+pair}}
+\begin{DoxyCompactList}\small\item\em Struttura per la coppia di chiavi. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structibrs__sig}{ibrs\+\_\+sig}}
+\begin{DoxyCompactList}\small\item\em Struttura per la firma. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{lib-ibrs-gm_8h_a369266c24eacffb87046522897a570d5}\label{lib-ibrs-gm_8h_a369266c24eacffb87046522897a570d5}} 
+\#define {\bfseries \+\_\+\+G\+N\+U\+\_\+\+S\+O\+U\+R\+CE}
+\item 
+\mbox{\Hypertarget{lib-ibrs-gm_8h_a82916ae1d9c2b8f4027fb13acfbbd0b0}\label{lib-ibrs-gm_8h_a82916ae1d9c2b8f4027fb13acfbbd0b0}} 
+\#define {\bfseries S\+I\+N\+G\+L\+E\+\_\+\+A\+L\+L\+O\+C\+\_\+\+S\+I\+ZE}~64
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{lib-ibrs-gm_8h_a6704a17c623c32cf5e0a6a2017d423c4}{init\+\_\+array\+\_\+ibrs}} (\mbox{\hyperlink{structarray__ibrs}{array\+\_\+ibrs}} $\ast$a, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Funzione per inizializzare un \mbox{\hyperlink{structarray__ibrs}{array\+\_\+ibrs}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lib-ibrs-gm_8h_a497b86a0a9988e310a01487c454931c2}{insert\+\_\+id}} (\mbox{\hyperlink{structarray__ibrs}{array\+\_\+ibrs}} $\ast$a, char $\ast$id, int index)
+\begin{DoxyCompactList}\small\item\em Funzione per inserire un id in un \mbox{\hyperlink{structarray__ibrs}{array\+\_\+ibrs}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lib-ibrs-gm_8h_a809dfdcee9afaec5eaa2795c12293976}{free\+\_\+array}} (\mbox{\hyperlink{structarray__ibrs}{array\+\_\+ibrs}} $\ast$a)
+\begin{DoxyCompactList}\small\item\em Funzione per liberare l\textquotesingle{}\mbox{\hyperlink{structarray__ibrs}{array\+\_\+ibrs}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lib-ibrs-gm_8h_a49995ab99e90395d439ce73e25e5cb57}{init\+\_\+array\+\_\+element\+\_\+t\+\_\+ibrs}} (\mbox{\hyperlink{structarray__element__t__ibrs}{array\+\_\+element\+\_\+t\+\_\+ibrs}} $\ast$a, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Funzione per inizializzare un \mbox{\hyperlink{structarray__element__t__ibrs}{array\+\_\+element\+\_\+t\+\_\+ibrs}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lib-ibrs-gm_8h_a2ad48ac20a161d9e04c78863358b336f}{insert\+\_\+element}} (\mbox{\hyperlink{structarray__element__t__ibrs}{array\+\_\+element\+\_\+t\+\_\+ibrs}} $\ast$a, element\+\_\+t element, int index)
+\begin{DoxyCompactList}\small\item\em Funzione per inserire un element\+\_\+t in un \mbox{\hyperlink{structarray__element__t__ibrs}{array\+\_\+element\+\_\+t\+\_\+ibrs}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{lib-ibrs-gm_8h_ab056ccde6ee4fb9668c8f6bf9aa84859}{free\+\_\+array\+\_\+element}} (\mbox{\hyperlink{structarray__element__t__ibrs}{array\+\_\+element\+\_\+t\+\_\+ibrs}} $\ast$a)
+\begin{DoxyCompactList}\small\item\em Funzione per liberare l\textquotesingle{}\mbox{\hyperlink{structarray__element__t__ibrs}{array\+\_\+element\+\_\+t\+\_\+ibrs}}. \end{DoxyCompactList}\item 
+long \mbox{\hyperlink{lib-ibrs-gm_8h_a9583537cf97d19466c572bdcc8023287}{get\+\_\+filesize}} (F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em Funzione per calcolare la grandezza di un file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{lib-ibrs-gm_8h_a25c5db4c4a30ae2ee4068a0eff7b001e}\label{lib-ibrs-gm_8h_a25c5db4c4a30ae2ee4068a0eff7b001e}} 
+int {\bfseries sec\+\_\+level}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Prototipi delle primitive crittografiche del Group Member. 
+
+Contiene i prototipi per le primitive, le macro, le costanti e tutte le variabili globali utili per il funzionamento.
+
+\begin{DoxyAuthor}{Author}
+Alessandro Midolo 
+
+Salvatore Pizzimento 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{lib-ibrs-gm_8h_a809dfdcee9afaec5eaa2795c12293976}\label{lib-ibrs-gm_8h_a809dfdcee9afaec5eaa2795c12293976}} 
+\index{lib-\/ibrs-\/gm.h@{lib-\/ibrs-\/gm.h}!free\_array@{free\_array}}
+\index{free\_array@{free\_array}!lib-\/ibrs-\/gm.h@{lib-\/ibrs-\/gm.h}}
+\doxysubsubsection{\texorpdfstring{free\_array()}{free\_array()}}
+{\footnotesize\ttfamily void free\+\_\+array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structarray__ibrs}{array\+\_\+ibrs}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Funzione per liberare l\textquotesingle{}\mbox{\hyperlink{structarray__ibrs}{array\+\_\+ibrs}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & array da liberare \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lib-ibrs-gm_8h_ab056ccde6ee4fb9668c8f6bf9aa84859}\label{lib-ibrs-gm_8h_ab056ccde6ee4fb9668c8f6bf9aa84859}} 
+\index{lib-\/ibrs-\/gm.h@{lib-\/ibrs-\/gm.h}!free\_array\_element@{free\_array\_element}}
+\index{free\_array\_element@{free\_array\_element}!lib-\/ibrs-\/gm.h@{lib-\/ibrs-\/gm.h}}
+\doxysubsubsection{\texorpdfstring{free\_array\_element()}{free\_array\_element()}}
+{\footnotesize\ttfamily void free\+\_\+array\+\_\+element (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structarray__element__t__ibrs}{array\+\_\+element\+\_\+t\+\_\+ibrs}} $\ast$}]{a }\end{DoxyParamCaption})}
+
+
+
+Funzione per liberare l\textquotesingle{}\mbox{\hyperlink{structarray__element__t__ibrs}{array\+\_\+element\+\_\+t\+\_\+ibrs}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & array da liberare \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lib-ibrs-gm_8h_a9583537cf97d19466c572bdcc8023287}\label{lib-ibrs-gm_8h_a9583537cf97d19466c572bdcc8023287}} 
+\index{lib-\/ibrs-\/gm.h@{lib-\/ibrs-\/gm.h}!get\_filesize@{get\_filesize}}
+\index{get\_filesize@{get\_filesize}!lib-\/ibrs-\/gm.h@{lib-\/ibrs-\/gm.h}}
+\doxysubsubsection{\texorpdfstring{get\_filesize()}{get\_filesize()}}
+{\footnotesize\ttfamily long get\+\_\+filesize (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{fp }\end{DoxyParamCaption})}
+
+
+
+Funzione per calcolare la grandezza di un file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fp} & file stream del file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+grandezza del file 
+\end{DoxyReturn}
+\mbox{\Hypertarget{lib-ibrs-gm_8h_a49995ab99e90395d439ce73e25e5cb57}\label{lib-ibrs-gm_8h_a49995ab99e90395d439ce73e25e5cb57}} 
+\index{lib-\/ibrs-\/gm.h@{lib-\/ibrs-\/gm.h}!init\_array\_element\_t\_ibrs@{init\_array\_element\_t\_ibrs}}
+\index{init\_array\_element\_t\_ibrs@{init\_array\_element\_t\_ibrs}!lib-\/ibrs-\/gm.h@{lib-\/ibrs-\/gm.h}}
+\doxysubsubsection{\texorpdfstring{init\_array\_element\_t\_ibrs()}{init\_array\_element\_t\_ibrs()}}
+{\footnotesize\ttfamily void init\+\_\+array\+\_\+element\+\_\+t\+\_\+ibrs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structarray__element__t__ibrs}{array\+\_\+element\+\_\+t\+\_\+ibrs}} $\ast$}]{a,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+
+
+Funzione per inizializzare un \mbox{\hyperlink{structarray__element__t__ibrs}{array\+\_\+element\+\_\+t\+\_\+ibrs}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & array di element\+\_\+t da inizializzare \\
+\hline
+{\em size} & size dell\textquotesingle{}array da inizializzare \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lib-ibrs-gm_8h_a6704a17c623c32cf5e0a6a2017d423c4}\label{lib-ibrs-gm_8h_a6704a17c623c32cf5e0a6a2017d423c4}} 
+\index{lib-\/ibrs-\/gm.h@{lib-\/ibrs-\/gm.h}!init\_array\_ibrs@{init\_array\_ibrs}}
+\index{init\_array\_ibrs@{init\_array\_ibrs}!lib-\/ibrs-\/gm.h@{lib-\/ibrs-\/gm.h}}
+\doxysubsubsection{\texorpdfstring{init\_array\_ibrs()}{init\_array\_ibrs()}}
+{\footnotesize\ttfamily void init\+\_\+array\+\_\+ibrs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structarray__ibrs}{array\+\_\+ibrs}} $\ast$}]{a,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+
+
+Funzione per inizializzare un \mbox{\hyperlink{structarray__ibrs}{array\+\_\+ibrs}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & array da inizializzare \\
+\hline
+{\em size} & size dell\textquotesingle{}array da inizializzare \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lib-ibrs-gm_8h_a2ad48ac20a161d9e04c78863358b336f}\label{lib-ibrs-gm_8h_a2ad48ac20a161d9e04c78863358b336f}} 
+\index{lib-\/ibrs-\/gm.h@{lib-\/ibrs-\/gm.h}!insert\_element@{insert\_element}}
+\index{insert\_element@{insert\_element}!lib-\/ibrs-\/gm.h@{lib-\/ibrs-\/gm.h}}
+\doxysubsubsection{\texorpdfstring{insert\_element()}{insert\_element()}}
+{\footnotesize\ttfamily void insert\+\_\+element (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structarray__element__t__ibrs}{array\+\_\+element\+\_\+t\+\_\+ibrs}} $\ast$}]{a,  }\item[{element\+\_\+t}]{element,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Funzione per inserire un element\+\_\+t in un \mbox{\hyperlink{structarray__element__t__ibrs}{array\+\_\+element\+\_\+t\+\_\+ibrs}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & array di element\+\_\+t da riempire \\
+\hline
+{\em element} & element\+\_\+t da inserire nell\textquotesingle{}array \\
+\hline
+{\em index} & indice dell\textquotesingle{}array dove inserire l\textquotesingle{}element\+\_\+t \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{lib-ibrs-gm_8h_a497b86a0a9988e310a01487c454931c2}\label{lib-ibrs-gm_8h_a497b86a0a9988e310a01487c454931c2}} 
+\index{lib-\/ibrs-\/gm.h@{lib-\/ibrs-\/gm.h}!insert\_id@{insert\_id}}
+\index{insert\_id@{insert\_id}!lib-\/ibrs-\/gm.h@{lib-\/ibrs-\/gm.h}}
+\doxysubsubsection{\texorpdfstring{insert\_id()}{insert\_id()}}
+{\footnotesize\ttfamily void insert\+\_\+id (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structarray__ibrs}{array\+\_\+ibrs}} $\ast$}]{a,  }\item[{char $\ast$}]{id,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Funzione per inserire un id in un \mbox{\hyperlink{structarray__ibrs}{array\+\_\+ibrs}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & array da riempire \\
+\hline
+{\em id} & identità da inserire nell\textquotesingle{}array \\
+\hline
+{\em index} & indice dell\textquotesingle{}array dove inserire l\textquotesingle{}identità \\
+\hline
+\end{DoxyParams}

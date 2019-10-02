@@ -1,0 +1,200 @@
+\hypertarget{IBRS__GA_2lib-ibrs-helper_8c}{}\doxysection{I\+B\+R\+S\+\_\+\+G\+A/lib-\/ibrs-\/helper.c File Reference}
+\label{IBRS__GA_2lib-ibrs-helper_8c}\index{IBRS\_GA/lib-\/ibrs-\/helper.c@{IBRS\_GA/lib-\/ibrs-\/helper.c}}
+
+
+Helper per il Group Admin.  
+
+
+{\ttfamily \#include \char`\"{}lib-\/ibrs-\/helper.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{IBRS__GA_2lib-ibrs-helper_8c_aa1adb29d1b1634d3feac938205bc5e14}{rcv\+\_\+data}} (int socket\+\_\+id, char $\ast$read\+\_\+buffer, int size)
+\begin{DoxyCompactList}\small\item\em Funzione per ricevere dati da una socket. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{IBRS__GA_2lib-ibrs-helper_8c_a48f97ec5d22e0ace64be95a2b9a18ed2}{snd\+\_\+data}} (int socket\+\_\+id, char $\ast$send\+\_\+buffer, int size)
+\begin{DoxyCompactList}\small\item\em Funzione per inviare dati ad una socket. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{IBRS__GA_2lib-ibrs-helper_8c_acb341bb1c0a876899def027e766c9bcd}{authenticate}} (char $\ast$username, char $\ast$groupname, char $\ast$ids\+\_\+buffer)
+\begin{DoxyCompactList}\small\item\em Funzione per autenticare un\textquotesingle{}identità ad un gruppo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{IBRS__GA_2lib-ibrs-helper_8c_af0993429c96bff86222adce9019adbb4}{ibrs\+\_\+startup}} (char $\ast$username, char $\ast$groupname)
+\begin{DoxyCompactList}\small\item\em Funzione per creare un ambiente I\+B\+RS. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{IBRS__GA_2lib-ibrs-helper_8c_a0bb8ecc9b9caa8c22c434cfaeade64b0}{generate\+\_\+keys}} (char $\ast$groupname, char $\ast$username)
+\begin{DoxyCompactList}\small\item\em Funzione per creare delle chiavi I\+B\+RS. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{IBRS__GA_2lib-ibrs-helper_8c_abb9b241ee29e4433c85810b4226050eb}{send\+\_\+params}} (int socket\+\_\+fd, char $\ast$groupname, int send\+\_\+cs)
+\begin{DoxyCompactList}\small\item\em Funzione per mandare i parametri attraverso una socket. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{IBRS__GA_2lib-ibrs-helper_8c_a6fdb83e408a920573f478a495f94a358}{connect\+\_\+socket}} (char serv\+\_\+addr\mbox{[}$\,$\mbox{]}, int port)
+\begin{DoxyCompactList}\small\item\em Funzione per connettersi ad una socket tramite IP e P\+O\+R\+TA. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{IBRS__GA_2lib-ibrs-helper_8c_a6c3b91e96f1fe9e725b80b3ba545b9f8}{start\+\_\+exchange}} (int socket\+\_\+fd)
+\begin{DoxyCompactList}\small\item\em Funzione principale per cominciare uno scambio di dati tramite socket. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{IBRS__GA_2lib-ibrs-helper_8c_a1b9885b1d08ca11f7f82c972218b7263}\label{IBRS__GA_2lib-ibrs-helper_8c_a1b9885b1d08ca11f7f82c972218b7263}} 
+void \mbox{\hyperlink{IBRS__GA_2lib-ibrs-helper_8c_a1b9885b1d08ca11f7f82c972218b7263}{start\+\_\+connection}} ()
+\begin{DoxyCompactList}\small\item\em Funzione per iniziare la connessione tramite socket. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Helper per il Group Admin. 
+
+Helper contenente le funzioni usate nell\textquotesingle{}applicazione per la comunicazione tra le classi.
+
+\begin{DoxyAuthor}{Author}
+Alessandro Midolo 
+
+Salvatore Pizzimento 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{IBRS__GA_2lib-ibrs-helper_8c_acb341bb1c0a876899def027e766c9bcd}\label{IBRS__GA_2lib-ibrs-helper_8c_acb341bb1c0a876899def027e766c9bcd}} 
+\index{lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}!authenticate@{authenticate}}
+\index{authenticate@{authenticate}!lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}}
+\doxysubsubsection{\texorpdfstring{authenticate()}{authenticate()}}
+{\footnotesize\ttfamily int authenticate (\begin{DoxyParamCaption}\item[{char $\ast$}]{username,  }\item[{char $\ast$}]{groupname,  }\item[{char $\ast$}]{ids\+\_\+buffer }\end{DoxyParamCaption})}
+
+
+
+Funzione per autenticare un\textquotesingle{}identità ad un gruppo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & identità da autenticare \\
+\hline
+{\em groupname} & gruppo su cui autenticare l\textquotesingle{}identità \\
+\hline
+{\em ids\+\_\+buffer} & lista delle indentità in cui cercare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 se l\textquotesingle{}autenticazione è avvenuta con successo, 0 altrimenti 
+\end{DoxyReturn}
+\mbox{\Hypertarget{IBRS__GA_2lib-ibrs-helper_8c_a6fdb83e408a920573f478a495f94a358}\label{IBRS__GA_2lib-ibrs-helper_8c_a6fdb83e408a920573f478a495f94a358}} 
+\index{lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}!connect\_socket@{connect\_socket}}
+\index{connect\_socket@{connect\_socket}!lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}}
+\doxysubsubsection{\texorpdfstring{connect\_socket()}{connect\_socket()}}
+{\footnotesize\ttfamily int connect\+\_\+socket (\begin{DoxyParamCaption}\item[{char}]{serv\+\_\+addr\mbox{[}$\,$\mbox{]},  }\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+Funzione per connettersi ad una socket tramite IP e P\+O\+R\+TA. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serv\+\_\+addr\mbox{[}$\,$\mbox{]}} & indirizzo IP a cui connettersi \\
+\hline
+{\em port} & porta a cui connettersi \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+descrittore della socket connessione socket creata 
+\end{DoxyReturn}
+\mbox{\Hypertarget{IBRS__GA_2lib-ibrs-helper_8c_a0bb8ecc9b9caa8c22c434cfaeade64b0}\label{IBRS__GA_2lib-ibrs-helper_8c_a0bb8ecc9b9caa8c22c434cfaeade64b0}} 
+\index{lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}!generate\_keys@{generate\_keys}}
+\index{generate\_keys@{generate\_keys}!lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}}
+\doxysubsubsection{\texorpdfstring{generate\_keys()}{generate\_keys()}}
+{\footnotesize\ttfamily void generate\+\_\+keys (\begin{DoxyParamCaption}\item[{char $\ast$}]{groupname,  }\item[{char $\ast$}]{username }\end{DoxyParamCaption})}
+
+
+
+Funzione per creare delle chiavi I\+B\+RS. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em groupname} & gruppo di appartenenza dell\textquotesingle{}identità \\
+\hline
+{\em username} & identità per cui creare la coppia di chiavi \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{IBRS__GA_2lib-ibrs-helper_8c_af0993429c96bff86222adce9019adbb4}\label{IBRS__GA_2lib-ibrs-helper_8c_af0993429c96bff86222adce9019adbb4}} 
+\index{lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}!ibrs\_startup@{ibrs\_startup}}
+\index{ibrs\_startup@{ibrs\_startup}!lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}}
+\doxysubsubsection{\texorpdfstring{ibrs\_startup()}{ibrs\_startup()}}
+{\footnotesize\ttfamily void ibrs\+\_\+startup (\begin{DoxyParamCaption}\item[{char $\ast$}]{username,  }\item[{char $\ast$}]{groupname }\end{DoxyParamCaption})}
+
+
+
+Funzione per creare un ambiente I\+B\+RS. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & identità per cui creare la coppia di chiavi \\
+\hline
+{\em groupname} & gruppo di appartenenza dell\textquotesingle{}identità \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{IBRS__GA_2lib-ibrs-helper_8c_aa1adb29d1b1634d3feac938205bc5e14}\label{IBRS__GA_2lib-ibrs-helper_8c_aa1adb29d1b1634d3feac938205bc5e14}} 
+\index{lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}!rcv\_data@{rcv\_data}}
+\index{rcv\_data@{rcv\_data}!lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}}
+\doxysubsubsection{\texorpdfstring{rcv\_data()}{rcv\_data()}}
+{\footnotesize\ttfamily int rcv\+\_\+data (\begin{DoxyParamCaption}\item[{int}]{socket\+\_\+id,  }\item[{char $\ast$}]{read\+\_\+buffer,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Funzione per ricevere dati da una socket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket\+\_\+id} & socket da cui ricevere i dati \\
+\hline
+{\em read\+\_\+buffer} & buffer dove depositare i dati ricevuti \\
+\hline
+{\em size} & numero di caratteri massimi da ricevere \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 se i dati sono stati ricevuti correttamente, 0 altrimenti 
+\end{DoxyReturn}
+\mbox{\Hypertarget{IBRS__GA_2lib-ibrs-helper_8c_abb9b241ee29e4433c85810b4226050eb}\label{IBRS__GA_2lib-ibrs-helper_8c_abb9b241ee29e4433c85810b4226050eb}} 
+\index{lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}!send\_params@{send\_params}}
+\index{send\_params@{send\_params}!lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}}
+\doxysubsubsection{\texorpdfstring{send\_params()}{send\_params()}}
+{\footnotesize\ttfamily int send\+\_\+params (\begin{DoxyParamCaption}\item[{int}]{socket\+\_\+fd,  }\item[{char $\ast$}]{groupname,  }\item[{int}]{send\+\_\+cs }\end{DoxyParamCaption})}
+
+
+
+Funzione per mandare i parametri attraverso una socket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket\+\_\+fd} & socket attraverso cui mandare i parametri \\
+\hline
+{\em groupname} & gruppo per cui i parametri saranno validi \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 se i parametri sono stati inviati correttamente, 0 altrimenti 
+\end{DoxyReturn}
+\mbox{\Hypertarget{IBRS__GA_2lib-ibrs-helper_8c_a48f97ec5d22e0ace64be95a2b9a18ed2}\label{IBRS__GA_2lib-ibrs-helper_8c_a48f97ec5d22e0ace64be95a2b9a18ed2}} 
+\index{lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}!snd\_data@{snd\_data}}
+\index{snd\_data@{snd\_data}!lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}}
+\doxysubsubsection{\texorpdfstring{snd\_data()}{snd\_data()}}
+{\footnotesize\ttfamily int snd\+\_\+data (\begin{DoxyParamCaption}\item[{int}]{socket\+\_\+id,  }\item[{char $\ast$}]{send\+\_\+buffer,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Funzione per inviare dati ad una socket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket\+\_\+id} & socket a cui mandare i dati \\
+\hline
+{\em buffer} & buffer di dati da inviare \\
+\hline
+{\em size} & numero di caratteri massimi da mandare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 se i dati sono stati inviati correttamente, 0 altrimenti 
+\end{DoxyReturn}
+\mbox{\Hypertarget{IBRS__GA_2lib-ibrs-helper_8c_a6c3b91e96f1fe9e725b80b3ba545b9f8}\label{IBRS__GA_2lib-ibrs-helper_8c_a6c3b91e96f1fe9e725b80b3ba545b9f8}} 
+\index{lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}!start\_exchange@{start\_exchange}}
+\index{start\_exchange@{start\_exchange}!lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}}
+\doxysubsubsection{\texorpdfstring{start\_exchange()}{start\_exchange()}}
+{\footnotesize\ttfamily void start\+\_\+exchange (\begin{DoxyParamCaption}\item[{int}]{socket\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Funzione principale per cominciare uno scambio di dati tramite socket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket\+\_\+id} & socket con cui cominciare lo scambio \\
+\hline
+\end{DoxyParams}

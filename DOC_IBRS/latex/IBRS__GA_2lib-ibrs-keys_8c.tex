@@ -1,0 +1,68 @@
+\hypertarget{IBRS__GA_2lib-ibrs-keys_8c}{}\doxysection{I\+B\+R\+S\+\_\+\+G\+A/lib-\/ibrs-\/keys.c File Reference}
+\label{IBRS__GA_2lib-ibrs-keys_8c}\index{IBRS\_GA/lib-\/ibrs-\/keys.c@{IBRS\_GA/lib-\/ibrs-\/keys.c}}
+
+
+Chiavi per il Group Admin.  
+
+
+{\ttfamily \#include \char`\"{}lib-\/ibrs-\/keys.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{IBRS__GA_2lib-ibrs-keys_8c_a299a1c402196d60cd6f3de101def87d3}{ibrs\+\_\+keys\+\_\+gen}} (\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$public\+\_\+params, \mbox{\hyperlink{structibrs__secret__param__t}{ibrs\+\_\+secret\+\_\+param\+\_\+t}} $\ast$secret\+\_\+param, \mbox{\hyperlink{structibrs__key__pair}{ibrs\+\_\+key\+\_\+pair}} $\ast$keys, char $\ast$identity, F\+I\+LE $\ast$keys\+\_\+stream)
+\begin{DoxyCompactList}\small\item\em Funzione per creare una coppia di chiavi e salvarla in un file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{IBRS__GA_2lib-ibrs-keys_8c_acd32eb9e375101f3b35b257fc73b3eb4}{ibrs\+\_\+keys\+\_\+clear}} (\mbox{\hyperlink{structibrs__key__pair}{ibrs\+\_\+key\+\_\+pair}} $\ast$keys)
+\begin{DoxyCompactList}\small\item\em Funzione per liberare la struttura chiavi. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Chiavi per il Group Admin. 
+
+File contenente le funzioni per gestire le chiavi dello schema I\+B\+RS.
+
+\begin{DoxyAuthor}{Author}
+Alessandro Midolo 
+
+Salvatore Pizzimento 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{IBRS__GA_2lib-ibrs-keys_8c_acd32eb9e375101f3b35b257fc73b3eb4}\label{IBRS__GA_2lib-ibrs-keys_8c_acd32eb9e375101f3b35b257fc73b3eb4}} 
+\index{lib-\/ibrs-\/keys.c@{lib-\/ibrs-\/keys.c}!ibrs\_keys\_clear@{ibrs\_keys\_clear}}
+\index{ibrs\_keys\_clear@{ibrs\_keys\_clear}!lib-\/ibrs-\/keys.c@{lib-\/ibrs-\/keys.c}}
+\doxysubsubsection{\texorpdfstring{ibrs\_keys\_clear()}{ibrs\_keys\_clear()}}
+{\footnotesize\ttfamily void ibrs\+\_\+keys\+\_\+clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structibrs__key__pair}{ibrs\+\_\+key\+\_\+pair}} $\ast$}]{keys }\end{DoxyParamCaption})}
+
+
+
+Funzione per liberare la struttura chiavi. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em keys} & struttura da liberare \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{IBRS__GA_2lib-ibrs-keys_8c_a299a1c402196d60cd6f3de101def87d3}\label{IBRS__GA_2lib-ibrs-keys_8c_a299a1c402196d60cd6f3de101def87d3}} 
+\index{lib-\/ibrs-\/keys.c@{lib-\/ibrs-\/keys.c}!ibrs\_keys\_gen@{ibrs\_keys\_gen}}
+\index{ibrs\_keys\_gen@{ibrs\_keys\_gen}!lib-\/ibrs-\/keys.c@{lib-\/ibrs-\/keys.c}}
+\doxysubsubsection{\texorpdfstring{ibrs\_keys\_gen()}{ibrs\_keys\_gen()}}
+{\footnotesize\ttfamily void ibrs\+\_\+keys\+\_\+gen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$}]{public\+\_\+params,  }\item[{\mbox{\hyperlink{structibrs__secret__param__t}{ibrs\+\_\+secret\+\_\+param\+\_\+t}} $\ast$}]{secret\+\_\+param,  }\item[{\mbox{\hyperlink{structibrs__key__pair}{ibrs\+\_\+key\+\_\+pair}} $\ast$}]{keys,  }\item[{char $\ast$}]{identity,  }\item[{F\+I\+LE $\ast$}]{keys\+\_\+stream }\end{DoxyParamCaption})}
+
+
+
+Funzione per creare una coppia di chiavi e salvarla in un file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em public\+\_\+params} & parametri pubblici per lo schema crittografico \\
+\hline
+{\em secret\+\_\+param} & parametro segreto per lo schema crittografico \\
+\hline
+{\em keys} & struttura dove inserire la coppia di chiavi \\
+\hline
+{\em identity} & identità per cui creare la coppia di chiavi \\
+\hline
+{\em keys\+\_\+stream} & file stream dove salvare la coppia di chiavi \\
+\hline
+\end{DoxyParams}

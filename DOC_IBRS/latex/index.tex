@@ -1,0 +1,27 @@
+Lo scopo del progetto è quello di creare un\textquotesingle{}infrastruttura cloud-\/based per fornire un servizio di data sharing basato sullo schema crittografico I\+B\+RS (Identity Based Ring Signature). ~\newline
+ La struttura di base è composta da 3 entità\+:
+\begin{DoxyItemize}
+\item Group Admin
+\item Group Member
+\item Cloud Server
+\end{DoxyItemize}
+
+Il Group Admin sarà il responsabile della creazione e condivisione dei parametri e delle chiavi per i membri di un gruppo di condivisione. ~\newline
+ Il Group Member sarà l\textquotesingle{}entità che vorrà creare un gruppo di condivisione o farne parte comunicando con il Group Admin; comunicando con il Cloud Server potrà effettuare download e/o upload di file sullo spazio di storage fornito da Amazon Web Services S3. ~\newline
+ Il Cloud Server sarà il principale responsabile delle operazioni di scambio di contenuti tra i membri legittimi di uno stesso gruppo di condivisione. ~\newline
+\hypertarget{index_autotoc_md1}{}\doxysubsection{Specifiche tecniche}\label{index_autotoc_md1}
+Sia il Group Admin che il Cloud Server risiederanno su istanze Amazon Web Services E\+C2, con Security Groups customizzati per permettere dall\textquotesingle{}esterno i comandi ping, ssh, e per accettare connessioni T\+CP nel range di porte 8000-\/9000. ~\newline
+ Il core del Group Member sarà un\textquotesingle{}immagine Docker opportunamente creata per una facile esecuzione. ~\newline
+ Tutte le entità richiedono le librerie crittografiche P\+BC, Nettle, G\+MP per implementare lo schema di firma I\+B\+RS, il compilatore gcc e altre utilities di sistema. ~\newline
+\hypertarget{index_autotoc_md2}{}\doxysubsection{Installazione}\label{index_autotoc_md2}
+Per installare il server Group Admin è necessario creare una nuova istanza E\+C2 con immagine Ubuntu. I Security Group customizzati permettono il comando di ping dall\textquotesingle{}esterno, l\textquotesingle{}accesso ssh da host esterni e la corretta creazione di connessioni T\+CP per la comunicazione socket tra i due server e i client. Dopo l\textquotesingle{}accesso al server è necessario scaricare le librerie crittografiche e le utilities di sistema per avviare il progetto correttamente. È necessario settare opportunamente l\textquotesingle{}indirizzo ip del Cloud Server nella variable d\textquotesingle{}ambiente \char`\"{}\+C\+S\char`\"{} tramite comando \textquotesingle{}export CS=IP\textquotesingle{}. Successivamente bisogna scaricare il core del Group Admin tramite comando \textquotesingle{}git\textquotesingle{} e avviare il building tramite comando \textquotesingle{}make\textquotesingle{}. Concluso il building è possibile mettere in ascolto il server avviando il progetto con il comando \textquotesingle{}./test-\/ibrs-\/gm\textquotesingle{}. ~\newline
+
+
+Per installare il server Cloud Server è necessario creare una nuova istanza E\+C2 con immagine Ubuntu. I Security Group customizzati permettono il comando di ping dall\textquotesingle{}esterno, l\textquotesingle{}accesso ssh da host esterni e la corretta creazione di connessioni T\+CP per la comunicazione socket tra i due server e i client. Dopo l\textquotesingle{}accesso al server è necessario scaricare le librerie crittografiche e le utilities di sistema per avviare il progetto correttamente. È necessario configurare opportunamente l\textquotesingle{}accesso al bucket S3, tramite i comandi della C\+LI di A\+WS, che servirà da storage per il server. Successivamente bisogna scaricare il core del Cloud Server tramite comando \textquotesingle{}git\textquotesingle{} e avviare il building tramite comando \textquotesingle{}make\textquotesingle{}. Concluso il building è possibile mettere in ascolto il server avviando il progetto con il comando \textquotesingle{}./test-\/ibrs-\/cs\textquotesingle{}.
+
+Per installare il client Group Member è necessario buildare l\textquotesingle{}immagine Docker a partire dal Dockerfile fornito. Concluso tale processo, sarà necessario creare un nuovo container e settare opportunamente gli indirizzi IP del Group Admin e del Cloud Server attraverso i comandi \textquotesingle{}export GA=IP\textquotesingle{} e \textquotesingle{}export CS=IP\textquotesingle{}. Successivamente bisogna avviare il building tramite comando \textquotesingle{}make\textquotesingle{}. Concluso il building è possibile mettere avviare il client del progetto con il comando \textquotesingle{}./test-\/ibrs-\/gm\textquotesingle{}.\hypertarget{index_autotoc_md3}{}\doxysubsection{Utilizzo}\label{index_autotoc_md3}
+L\textquotesingle{}utente potrà scegliere se\+:
+\begin{DoxyItemize}
+\item collegarsi al Group Admin per creare o partecipare ad un gruppo di condivisione, ricevendo così i parametri necessari per l\textquotesingle{}algoritmo e la coppia di chiavi per l\textquotesingle{}autenticazione;
+\item collegarsi al Cloud Server per effetturare download o upload di contenuti nel gruppo di condivisione d\textquotesingle{}appartenenza, fornendo come prova d\textquotesingle{}autenticazione la firma del nome del file richiesto. 
+\end{DoxyItemize}

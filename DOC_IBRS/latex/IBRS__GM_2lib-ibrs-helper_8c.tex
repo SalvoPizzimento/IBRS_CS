@@ -1,0 +1,96 @@
+\hypertarget{IBRS__GM_2lib-ibrs-helper_8c}{}\doxysection{I\+B\+R\+S\+\_\+\+G\+M/lib-\/ibrs-\/helper.c File Reference}
+\label{IBRS__GM_2lib-ibrs-helper_8c}\index{IBRS\_GM/lib-\/ibrs-\/helper.c@{IBRS\_GM/lib-\/ibrs-\/helper.c}}
+
+
+Helper per il Group Member.  
+
+
+{\ttfamily \#include \char`\"{}lib-\/ibrs-\/helper.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{IBRS__GM_2lib-ibrs-helper_8c_aa1adb29d1b1634d3feac938205bc5e14}{rcv\+\_\+data}} (int socket\+\_\+id, char $\ast$read\+\_\+buffer, int size)
+\begin{DoxyCompactList}\small\item\em Funzione per ricevere dati da una socket. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{IBRS__GM_2lib-ibrs-helper_8c_a48f97ec5d22e0ace64be95a2b9a18ed2}{snd\+\_\+data}} (int socket\+\_\+id, char $\ast$send\+\_\+buffer, int size)
+\begin{DoxyCompactList}\small\item\em Funzione per inviare dati ad una socket. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{IBRS__GM_2lib-ibrs-helper_8c_a6fdb83e408a920573f478a495f94a358}{connect\+\_\+socket}} (char serv\+\_\+addr\mbox{[}$\,$\mbox{]}, int port)
+\begin{DoxyCompactList}\small\item\em Funzione per connettersi ad una socket tramite IP e P\+O\+R\+TA. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Helper per il Group Member. 
+
+Helper contenente le funzioni usate nell\textquotesingle{}applicazione per la comunicazione tra le classi.
+
+\begin{DoxyAuthor}{Author}
+Alessandro Midolo 
+
+Salvatore Pizzimento 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{IBRS__GM_2lib-ibrs-helper_8c_a6fdb83e408a920573f478a495f94a358}\label{IBRS__GM_2lib-ibrs-helper_8c_a6fdb83e408a920573f478a495f94a358}} 
+\index{lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}!connect\_socket@{connect\_socket}}
+\index{connect\_socket@{connect\_socket}!lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}}
+\doxysubsubsection{\texorpdfstring{connect\_socket()}{connect\_socket()}}
+{\footnotesize\ttfamily int connect\+\_\+socket (\begin{DoxyParamCaption}\item[{char}]{serv\+\_\+addr\mbox{[}$\,$\mbox{]},  }\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+Funzione per connettersi ad una socket tramite IP e P\+O\+R\+TA. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serv\+\_\+addr\mbox{[}$\,$\mbox{]}} & indirizzo IP a cui connettersi \\
+\hline
+{\em port} & porta a cui connettersi \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+descrittore della socket connessione socket creata 
+\end{DoxyReturn}
+\mbox{\Hypertarget{IBRS__GM_2lib-ibrs-helper_8c_aa1adb29d1b1634d3feac938205bc5e14}\label{IBRS__GM_2lib-ibrs-helper_8c_aa1adb29d1b1634d3feac938205bc5e14}} 
+\index{lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}!rcv\_data@{rcv\_data}}
+\index{rcv\_data@{rcv\_data}!lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}}
+\doxysubsubsection{\texorpdfstring{rcv\_data()}{rcv\_data()}}
+{\footnotesize\ttfamily int rcv\+\_\+data (\begin{DoxyParamCaption}\item[{int}]{socket\+\_\+id,  }\item[{char $\ast$}]{read\+\_\+buffer,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Funzione per ricevere dati da una socket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket\+\_\+id} & socket da cui ricevere i dati \\
+\hline
+{\em read\+\_\+buffer} & buffer dove depositare i dati ricevuti \\
+\hline
+{\em size} & numero di caratteri massimi da ricevere \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 se i dati sono stati ricevuti correttamente, 0 altrimenti 
+\end{DoxyReturn}
+\mbox{\Hypertarget{IBRS__GM_2lib-ibrs-helper_8c_a48f97ec5d22e0ace64be95a2b9a18ed2}\label{IBRS__GM_2lib-ibrs-helper_8c_a48f97ec5d22e0ace64be95a2b9a18ed2}} 
+\index{lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}!snd\_data@{snd\_data}}
+\index{snd\_data@{snd\_data}!lib-\/ibrs-\/helper.c@{lib-\/ibrs-\/helper.c}}
+\doxysubsubsection{\texorpdfstring{snd\_data()}{snd\_data()}}
+{\footnotesize\ttfamily int snd\+\_\+data (\begin{DoxyParamCaption}\item[{int}]{socket\+\_\+id,  }\item[{char $\ast$}]{send\+\_\+buffer,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Funzione per inviare dati ad una socket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket\+\_\+id} & socket a cui mandare i dati \\
+\hline
+{\em buffer} & buffer di dati da inviare \\
+\hline
+{\em size} & numero di caratteri massimi da mandare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 se i dati sono stati inviati correttamente, 0 altrimenti 
+\end{DoxyReturn}

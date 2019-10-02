@@ -1,0 +1,64 @@
+\hypertarget{IBRS__GM_2lib-ibrs-keys_8c}{}\doxysection{I\+B\+R\+S\+\_\+\+G\+M/lib-\/ibrs-\/keys.c File Reference}
+\label{IBRS__GM_2lib-ibrs-keys_8c}\index{IBRS\_GM/lib-\/ibrs-\/keys.c@{IBRS\_GM/lib-\/ibrs-\/keys.c}}
+
+
+Chiavi per il Group Member.  
+
+
+{\ttfamily \#include \char`\"{}lib-\/ibrs-\/keys.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{IBRS__GM_2lib-ibrs-keys_8c_a4027a57e484727f10f98d05138e27fd4}{load\+\_\+keys}} (\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$public\+\_\+params, \mbox{\hyperlink{structibrs__key__pair}{ibrs\+\_\+key\+\_\+pair}} $\ast$keys, F\+I\+LE $\ast$keys\+\_\+stream)
+\begin{DoxyCompactList}\small\item\em Funzione per caricare una coppia di chiavi da un file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{IBRS__GM_2lib-ibrs-keys_8c_acd32eb9e375101f3b35b257fc73b3eb4}{ibrs\+\_\+keys\+\_\+clear}} (\mbox{\hyperlink{structibrs__key__pair}{ibrs\+\_\+key\+\_\+pair}} $\ast$keys)
+\begin{DoxyCompactList}\small\item\em Funzione per liberare la struttura chiavi. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Chiavi per il Group Member. 
+
+File contenente le funzioni per gestire le chiavi dello schema I\+B\+RS.
+
+\begin{DoxyAuthor}{Author}
+Alessandro Midolo 
+
+Salvatore Pizzimento 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{IBRS__GM_2lib-ibrs-keys_8c_acd32eb9e375101f3b35b257fc73b3eb4}\label{IBRS__GM_2lib-ibrs-keys_8c_acd32eb9e375101f3b35b257fc73b3eb4}} 
+\index{lib-\/ibrs-\/keys.c@{lib-\/ibrs-\/keys.c}!ibrs\_keys\_clear@{ibrs\_keys\_clear}}
+\index{ibrs\_keys\_clear@{ibrs\_keys\_clear}!lib-\/ibrs-\/keys.c@{lib-\/ibrs-\/keys.c}}
+\doxysubsubsection{\texorpdfstring{ibrs\_keys\_clear()}{ibrs\_keys\_clear()}}
+{\footnotesize\ttfamily void ibrs\+\_\+keys\+\_\+clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structibrs__key__pair}{ibrs\+\_\+key\+\_\+pair}} $\ast$}]{keys }\end{DoxyParamCaption})}
+
+
+
+Funzione per liberare la struttura chiavi. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em keys} & struttura da liberare \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{IBRS__GM_2lib-ibrs-keys_8c_a4027a57e484727f10f98d05138e27fd4}\label{IBRS__GM_2lib-ibrs-keys_8c_a4027a57e484727f10f98d05138e27fd4}} 
+\index{lib-\/ibrs-\/keys.c@{lib-\/ibrs-\/keys.c}!load\_keys@{load\_keys}}
+\index{load\_keys@{load\_keys}!lib-\/ibrs-\/keys.c@{lib-\/ibrs-\/keys.c}}
+\doxysubsubsection{\texorpdfstring{load\_keys()}{load\_keys()}}
+{\footnotesize\ttfamily void load\+\_\+keys (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$}]{public\+\_\+params,  }\item[{\mbox{\hyperlink{structibrs__key__pair}{ibrs\+\_\+key\+\_\+pair}} $\ast$}]{keys,  }\item[{F\+I\+LE $\ast$}]{keys\+\_\+stream }\end{DoxyParamCaption})}
+
+
+
+Funzione per caricare una coppia di chiavi da un file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em public\+\_\+params} & parametri pubblici per lo schema crittografico \\
+\hline
+{\em keys} & struttura dove caricare le chiavi \\
+\hline
+{\em keys\+\_\+stream} & file stream da cui caricare le chiavi \\
+\hline
+\end{DoxyParams}

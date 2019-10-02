@@ -1,0 +1,49 @@
+\hypertarget{IBRS__CS_2lib-misc_8c}{}\doxysection{I\+B\+R\+S\+\_\+\+C\+S/lib-\/misc.c File Reference}
+\label{IBRS__CS_2lib-misc_8c}\index{IBRS\_CS/lib-\/misc.c@{IBRS\_CS/lib-\/misc.c}}
+
+
+Libreria di supporto.  
+
+
+{\ttfamily \#include \char`\"{}lib-\/misc.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{IBRS__CS_2lib-misc_8c_a214b4d79ce851b897625b0e8b5637295}\label{IBRS__CS_2lib-misc_8c_a214b4d79ce851b897625b0e8b5637295}} 
+\#define {\bfseries dev\+\_\+random}~\char`\"{}/dev/random\char`\"{}
+\item 
+\mbox{\Hypertarget{IBRS__CS_2lib-misc_8c_ab2fa6a45e4fb4dad95f4270bb724c308}\label{IBRS__CS_2lib-misc_8c_ab2fa6a45e4fb4dad95f4270bb724c308}} 
+\#define {\bfseries select\+\_\+pbc\+\_\+param\+\_\+by\+\_\+security\+\_\+level}(param,  type,  level,  aux)~((void)0)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{IBRS__CS_2lib-misc_8c_a305459941b33a28760bc23067946643e}\label{IBRS__CS_2lib-misc_8c_a305459941b33a28760bc23067946643e}} 
+int {\bfseries extract\+\_\+randseed\+\_\+os\+\_\+rng} (uint8\+\_\+t $\ast$seed, size\+\_\+t seed\+\_\+bits)
+\item 
+\mbox{\Hypertarget{IBRS__CS_2lib-misc_8c_ad22c73d6a88b305bf8f70ed4af2fd20e}\label{IBRS__CS_2lib-misc_8c_ad22c73d6a88b305bf8f70ed4af2fd20e}} 
+int {\bfseries gmp\+\_\+randseed\+\_\+os\+\_\+rng} (gmp\+\_\+randstate\+\_\+t state, size\+\_\+t bits)
+\item 
+\mbox{\Hypertarget{IBRS__CS_2lib-misc_8c_afdf871194f69b9c306f52f18dc54e93c}\label{IBRS__CS_2lib-misc_8c_afdf871194f69b9c306f52f18dc54e93c}} 
+unsigned int {\bfseries non\+\_\+generic\+\_\+dlog\+\_\+secure\+\_\+size\+\_\+by\+\_\+security\+\_\+level} (unsigned int level)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Libreria di supporto. 
+
+libreria di supporto con varie funzioni\+:
+\begin{DoxyItemize}
+\item estrazione seed random dal pool di sistema per i sistemi Linux, Mac OS X e Windows;
+\item selezione della dimensione di un gruppo finito affinché questo sia sicuro contro attacchi al logaritmo discreto utilizzando algoritmi non-\/generici (raccomandazioni N\+I\+ST)
+\item selezione curva/pairing per la libreria P\+BC secondo il livello di sicurezza (raccomandazioni N\+I\+ST)
+
+\begin{DoxyAuthor}{Author}
+Mario Di Raimondo 
+
+Alessandro Midolo 
+
+Salvatore Pizzimento 
+\end{DoxyAuthor}
+
+\end{DoxyItemize}

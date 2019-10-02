@@ -1,0 +1,45 @@
+\hypertarget{IBRS__GM_2lib-misc_8h}{}\doxysection{I\+B\+R\+S\+\_\+\+G\+M/lib-\/misc.h File Reference}
+\label{IBRS__GM_2lib-misc_8h}\index{IBRS\_GM/lib-\/misc.h@{IBRS\_GM/lib-\/misc.h}}
+
+
+Prototipi della libreria di supporto.  
+
+
+{\ttfamily \#include $<$gmp.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-misc_8h_ae60abb6c831afeefd8a1fdce9f8c448b}\label{IBRS__GM_2lib-misc_8h_ae60abb6c831afeefd8a1fdce9f8c448b}} 
+\#define {\bfseries generic\+\_\+dlog\+\_\+secure\+\_\+size\+\_\+by\+\_\+security\+\_\+level}(level)~((level)$\ast$2)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-misc_8h_a305459941b33a28760bc23067946643e}\label{IBRS__GM_2lib-misc_8h_a305459941b33a28760bc23067946643e}} 
+int {\bfseries extract\+\_\+randseed\+\_\+os\+\_\+rng} (uint8\+\_\+t $\ast$seed, size\+\_\+t seed\+\_\+bits)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-misc_8h_ad22c73d6a88b305bf8f70ed4af2fd20e}\label{IBRS__GM_2lib-misc_8h_ad22c73d6a88b305bf8f70ed4af2fd20e}} 
+int {\bfseries gmp\+\_\+randseed\+\_\+os\+\_\+rng} (gmp\+\_\+randstate\+\_\+t state, size\+\_\+t bits)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-misc_8h_afdf871194f69b9c306f52f18dc54e93c}\label{IBRS__GM_2lib-misc_8h_afdf871194f69b9c306f52f18dc54e93c}} 
+unsigned int {\bfseries non\+\_\+generic\+\_\+dlog\+\_\+secure\+\_\+size\+\_\+by\+\_\+security\+\_\+level} (unsigned int level)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Prototipi della libreria di supporto. 
+
+Contiene i prototipi della libreria di supporto, le macro, le costanti e tutte le variabili globali utili per il funzionamento.
+
+\begin{DoxyAuthor}{Author}
+Mario Di Raimondo 
+
+Alessandro Midolo 
+
+Salvatore Pizzimento 
+\end{DoxyAuthor}

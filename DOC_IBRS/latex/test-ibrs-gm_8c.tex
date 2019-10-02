@@ -1,0 +1,90 @@
+\hypertarget{test-ibrs-gm_8c}{}\doxysection{I\+B\+R\+S\+\_\+\+G\+M/test-\/ibrs-\/gm.c File Reference}
+\label{test-ibrs-gm_8c}\index{IBRS\_GM/test-\/ibrs-\/gm.c@{IBRS\_GM/test-\/ibrs-\/gm.c}}
+
+
+File main del Group Member.  
+
+
+{\ttfamily \#include \char`\"{}lib-\/ibrs-\/helper.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{test-ibrs-gm_8c_a3aeed5d2858daa7651dea379658fa05e}\label{test-ibrs-gm_8c_a3aeed5d2858daa7651dea379658fa05e}} 
+\#define {\bfseries prng\+\_\+sec\+\_\+level}~96
+\item 
+\mbox{\Hypertarget{test-ibrs-gm_8c_a858dbee5ca0d32ebc8b6150f6dc62aeb}\label{test-ibrs-gm_8c_a858dbee5ca0d32ebc8b6150f6dc62aeb}} 
+\#define {\bfseries default\+\_\+sec\+\_\+level}~80
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{test-ibrs-gm_8c_a92cca04954a24ea1bf60cbc542b3947d}{setup\+\_\+group}} (char $\ast$username, char $\ast$filename, char $\ast$groupname, int check)
+\begin{DoxyCompactList}\small\item\em Funzione per creare un gruppo di condivisione prenderne parte. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{test-ibrs-gm_8c_adb884623dbeb33ac033bb3e9f211667d}{setup\+\_\+\+CS}} (char $\ast$username, char $\ast$filename, char $\ast$groupname, int check)
+\begin{DoxyCompactList}\small\item\em Funzione per creare una connessione con il Cloud Server. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{test-ibrs-gm_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{test-ibrs-gm_8c_a0ddf1224851353fc92bfbff6f499fa97}} 
+int {\bfseries main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File main del Group Member. 
+
+Contiene principali funzioni utili per il funzionamento del progetto.
+
+\begin{DoxyAuthor}{Author}
+Alessandro Midolo 
+
+Salvatore Pizzimento 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{test-ibrs-gm_8c_adb884623dbeb33ac033bb3e9f211667d}\label{test-ibrs-gm_8c_adb884623dbeb33ac033bb3e9f211667d}} 
+\index{test-\/ibrs-\/gm.c@{test-\/ibrs-\/gm.c}!setup\_CS@{setup\_CS}}
+\index{setup\_CS@{setup\_CS}!test-\/ibrs-\/gm.c@{test-\/ibrs-\/gm.c}}
+\doxysubsubsection{\texorpdfstring{setup\_CS()}{setup\_CS()}}
+{\footnotesize\ttfamily int setup\+\_\+\+CS (\begin{DoxyParamCaption}\item[{char $\ast$}]{username,  }\item[{char $\ast$}]{filename,  }\item[{char $\ast$}]{groupname,  }\item[{int}]{check }\end{DoxyParamCaption})}
+
+
+
+Funzione per creare una connessione con il Cloud Server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & username dell\textquotesingle{}entità chiamante \\
+\hline
+{\em filename} & nome del file da richiedere \\
+\hline
+{\em groupname} & nome identificativo del gruppo \\
+\hline
+{\em check} & variabile di controllo per creazione di un gruppo o per la sua entrata \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 se la connessione è stata creata correttamente, 0 altrimenti 
+\end{DoxyReturn}
+\mbox{\Hypertarget{test-ibrs-gm_8c_a92cca04954a24ea1bf60cbc542b3947d}\label{test-ibrs-gm_8c_a92cca04954a24ea1bf60cbc542b3947d}} 
+\index{test-\/ibrs-\/gm.c@{test-\/ibrs-\/gm.c}!setup\_group@{setup\_group}}
+\index{setup\_group@{setup\_group}!test-\/ibrs-\/gm.c@{test-\/ibrs-\/gm.c}}
+\doxysubsubsection{\texorpdfstring{setup\_group()}{setup\_group()}}
+{\footnotesize\ttfamily int setup\+\_\+group (\begin{DoxyParamCaption}\item[{char $\ast$}]{username,  }\item[{char $\ast$}]{filename,  }\item[{char $\ast$}]{groupname,  }\item[{int}]{check }\end{DoxyParamCaption})}
+
+
+
+Funzione per creare un gruppo di condivisione prenderne parte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & username dell\textquotesingle{}entità chiamante \\
+\hline
+{\em filename} & lista utenti del gruppo \\
+\hline
+{\em groupname} & nome identificativo del gruppo \\
+\hline
+{\em check} & variabile di controllo per creazione di un gruppo o per la sua entrata \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 se il gruppo è stato creato correttamente o se si è entrati correttamente, 0 altrimenti 
+\end{DoxyReturn}

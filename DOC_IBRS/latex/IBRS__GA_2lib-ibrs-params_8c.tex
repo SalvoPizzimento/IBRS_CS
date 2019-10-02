@@ -1,0 +1,122 @@
+\hypertarget{IBRS__GA_2lib-ibrs-params_8c}{}\doxysection{I\+B\+R\+S\+\_\+\+G\+A/lib-\/ibrs-\/params.c File Reference}
+\label{IBRS__GA_2lib-ibrs-params_8c}\index{IBRS\_GA/lib-\/ibrs-\/params.c@{IBRS\_GA/lib-\/ibrs-\/params.c}}
+
+
+Parametri per il Group Admin.  
+
+
+{\ttfamily \#include \char`\"{}lib-\/ibrs-\/params.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{IBRS__GA_2lib-ibrs-params_8c_a5fc27e321912aee81bde90c1b1f107e5}{generate\+\_\+params}} (\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$public\+\_\+params, \mbox{\hyperlink{structibrs__secret__param__t}{ibrs\+\_\+secret\+\_\+param\+\_\+t}} $\ast$secret\+\_\+param, int level, F\+I\+LE $\ast$pairing\+\_\+stream, F\+I\+LE $\ast$param\+\_\+stream, F\+I\+LE $\ast$secret\+\_\+stream)
+\begin{DoxyCompactList}\small\item\em Funzione per generare i parametri dello schema e salvarli nei file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{IBRS__GA_2lib-ibrs-params_8c_af90904db6e097bfeebe68330fa2549dd}{load\+\_\+params}} (\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$public\+\_\+params, int level, F\+I\+LE $\ast$pairing\+\_\+stream, F\+I\+LE $\ast$param\+\_\+stream)
+\begin{DoxyCompactList}\small\item\em Funzione per caricare i parametri dello schema da un file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{IBRS__GA_2lib-ibrs-params_8c_af28d0b12e926b8d17c44d6163c30bf82}{load\+\_\+params\+\_\+with\+\_\+secret}} (\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$public\+\_\+params, \mbox{\hyperlink{structibrs__secret__param__t}{ibrs\+\_\+secret\+\_\+param\+\_\+t}} $\ast$secret\+\_\+param, int level, F\+I\+LE $\ast$pairing\+\_\+stream, F\+I\+LE $\ast$param\+\_\+stream, F\+I\+LE $\ast$secret\+\_\+stream)
+\begin{DoxyCompactList}\small\item\em Funzione per caricare i parametri pubblici e il parametro segreto dello schema da un file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{IBRS__GA_2lib-ibrs-params_8c_ae4412ecaca8a575ae9a9c354ff6250cc}{ibrs\+\_\+params\+\_\+clear}} (\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$public\+\_\+params, \mbox{\hyperlink{structibrs__secret__param__t}{ibrs\+\_\+secret\+\_\+param\+\_\+t}} $\ast$secret\+\_\+param)
+\begin{DoxyCompactList}\small\item\em Funzione per liberare la struttura parametri. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Parametri per il Group Admin. 
+
+File contenente le funzioni per gestire i parametri dello schema I\+B\+RS.
+
+\begin{DoxyAuthor}{Author}
+Alessandro Midolo 
+
+Salvatore Pizzimento 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{IBRS__GA_2lib-ibrs-params_8c_a5fc27e321912aee81bde90c1b1f107e5}\label{IBRS__GA_2lib-ibrs-params_8c_a5fc27e321912aee81bde90c1b1f107e5}} 
+\index{lib-\/ibrs-\/params.c@{lib-\/ibrs-\/params.c}!generate\_params@{generate\_params}}
+\index{generate\_params@{generate\_params}!lib-\/ibrs-\/params.c@{lib-\/ibrs-\/params.c}}
+\doxysubsubsection{\texorpdfstring{generate\_params()}{generate\_params()}}
+{\footnotesize\ttfamily void generate\+\_\+params (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$}]{public\+\_\+params,  }\item[{\mbox{\hyperlink{structibrs__secret__param__t}{ibrs\+\_\+secret\+\_\+param\+\_\+t}} $\ast$}]{secret\+\_\+param,  }\item[{int}]{level,  }\item[{F\+I\+LE $\ast$}]{pairing\+\_\+stream,  }\item[{F\+I\+LE $\ast$}]{param\+\_\+stream,  }\item[{F\+I\+LE $\ast$}]{secret\+\_\+stream }\end{DoxyParamCaption})}
+
+
+
+Funzione per generare i parametri dello schema e salvarli nei file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em public\+\_\+params} & parametri pubblici per lo schema crittografico \\
+\hline
+{\em secret\+\_\+param} & parametro segreto per lo schema crittografico \\
+\hline
+{\em level} & livello di sicurezza crittografica \\
+\hline
+{\em pairing\+\_\+stream} & file stream dove salvare il pairing \\
+\hline
+{\em param\+\_\+stream} & file stream dove salvare i parametri \\
+\hline
+{\em secret\+\_\+stream} & file stream dove salvare il parametro segreto \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{IBRS__GA_2lib-ibrs-params_8c_ae4412ecaca8a575ae9a9c354ff6250cc}\label{IBRS__GA_2lib-ibrs-params_8c_ae4412ecaca8a575ae9a9c354ff6250cc}} 
+\index{lib-\/ibrs-\/params.c@{lib-\/ibrs-\/params.c}!ibrs\_params\_clear@{ibrs\_params\_clear}}
+\index{ibrs\_params\_clear@{ibrs\_params\_clear}!lib-\/ibrs-\/params.c@{lib-\/ibrs-\/params.c}}
+\doxysubsubsection{\texorpdfstring{ibrs\_params\_clear()}{ibrs\_params\_clear()}}
+{\footnotesize\ttfamily void ibrs\+\_\+params\+\_\+clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$}]{public\+\_\+params,  }\item[{\mbox{\hyperlink{structibrs__secret__param__t}{ibrs\+\_\+secret\+\_\+param\+\_\+t}} $\ast$}]{secret\+\_\+param }\end{DoxyParamCaption})}
+
+
+
+Funzione per liberare la struttura parametri. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em public\+\_\+params} & parametri pubblici da liberare \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{IBRS__GA_2lib-ibrs-params_8c_af90904db6e097bfeebe68330fa2549dd}\label{IBRS__GA_2lib-ibrs-params_8c_af90904db6e097bfeebe68330fa2549dd}} 
+\index{lib-\/ibrs-\/params.c@{lib-\/ibrs-\/params.c}!load\_params@{load\_params}}
+\index{load\_params@{load\_params}!lib-\/ibrs-\/params.c@{lib-\/ibrs-\/params.c}}
+\doxysubsubsection{\texorpdfstring{load\_params()}{load\_params()}}
+{\footnotesize\ttfamily void load\+\_\+params (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$}]{public\+\_\+params,  }\item[{int}]{level,  }\item[{F\+I\+LE $\ast$}]{pairing\+\_\+stream,  }\item[{F\+I\+LE $\ast$}]{param\+\_\+stream }\end{DoxyParamCaption})}
+
+
+
+Funzione per caricare i parametri dello schema da un file. 
+
+Funzione per caricare i soli parametri pubblici dello schema da un file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em public\+\_\+params} & parametri pubblici per lo schema crittografico \\
+\hline
+{\em level} & livello di sicurezza crittografica \\
+\hline
+{\em pairing\+\_\+stream} & file stream da cui caricare il pairing \\
+\hline
+{\em param\+\_\+stream} & file stream da cui caricare i parametri \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{IBRS__GA_2lib-ibrs-params_8c_af28d0b12e926b8d17c44d6163c30bf82}\label{IBRS__GA_2lib-ibrs-params_8c_af28d0b12e926b8d17c44d6163c30bf82}} 
+\index{lib-\/ibrs-\/params.c@{lib-\/ibrs-\/params.c}!load\_params\_with\_secret@{load\_params\_with\_secret}}
+\index{load\_params\_with\_secret@{load\_params\_with\_secret}!lib-\/ibrs-\/params.c@{lib-\/ibrs-\/params.c}}
+\doxysubsubsection{\texorpdfstring{load\_params\_with\_secret()}{load\_params\_with\_secret()}}
+{\footnotesize\ttfamily void load\+\_\+params\+\_\+with\+\_\+secret (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$}]{public\+\_\+params,  }\item[{\mbox{\hyperlink{structibrs__secret__param__t}{ibrs\+\_\+secret\+\_\+param\+\_\+t}} $\ast$}]{secret\+\_\+param,  }\item[{int}]{level,  }\item[{F\+I\+LE $\ast$}]{pairing\+\_\+stream,  }\item[{F\+I\+LE $\ast$}]{param\+\_\+stream,  }\item[{F\+I\+LE $\ast$}]{secret\+\_\+stream }\end{DoxyParamCaption})}
+
+
+
+Funzione per caricare i parametri pubblici e il parametro segreto dello schema da un file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em public\+\_\+params} & parametri pubblici per lo schema crittografico \\
+\hline
+{\em secret\+\_\+param} & parametro segreto per lo schema crittografico \\
+\hline
+{\em level} & livello di sicurezza crittografica \\
+\hline
+{\em pairing\+\_\+stream} & file stream da cui caricare il pairing \\
+\hline
+{\em param\+\_\+stream} & file stream da cui caricare i parametri \\
+\hline
+{\em param\+\_\+stream} & file stream da cui caricare il parametro segreto \\
+\hline
+\end{DoxyParams}

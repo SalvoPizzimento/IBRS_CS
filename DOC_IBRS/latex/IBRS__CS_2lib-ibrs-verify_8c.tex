@@ -1,0 +1,92 @@
+\hypertarget{IBRS__CS_2lib-ibrs-verify_8c}{}\doxysection{I\+B\+R\+S\+\_\+\+C\+S/lib-\/ibrs-\/verify.c File Reference}
+\label{IBRS__CS_2lib-ibrs-verify_8c}\index{IBRS\_CS/lib-\/ibrs-\/verify.c@{IBRS\_CS/lib-\/ibrs-\/verify.c}}
+
+
+Verifica per il Cloud Server.  
+
+
+{\ttfamily \#include \char`\"{}lib-\/ibrs-\/verify.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{IBRS__CS_2lib-ibrs-verify_8c_a51252e4f7d912c46085186b8c3882aba}{ibrs\+\_\+import\+\_\+sign}} (\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$public\+\_\+params, int length, F\+I\+LE $\ast$sign\+\_\+stream, \mbox{\hyperlink{structibrs__sig}{ibrs\+\_\+sig}} $\ast$sign)
+\begin{DoxyCompactList}\small\item\em Funzione per importare la firma da file nella struttura firma. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{IBRS__CS_2lib-ibrs-verify_8c_a62d5256d09de15ec6b8fc5f6244f1fa1}{ibrs\+\_\+sign\+\_\+ver}} (\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$public\+\_\+params, \mbox{\hyperlink{structarray__ibrs}{array\+\_\+ibrs}} l, const uint8\+\_\+t $\ast$msg, \mbox{\hyperlink{structibrs__sig}{ibrs\+\_\+sig}} $\ast$sign)
+\begin{DoxyCompactList}\small\item\em Funzione per verifica la correttezza della firma. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{IBRS__CS_2lib-ibrs-verify_8c_a35feaf0aa8bfd778a5337ce7dbede114}{ibrs\+\_\+sign\+\_\+clear}} (\mbox{\hyperlink{structibrs__sig}{ibrs\+\_\+sig}} $\ast$sign)
+\begin{DoxyCompactList}\small\item\em Funzione per liberare la struttura firma. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Verifica per il Cloud Server. 
+
+File contenente le funzioni per gestire la verifica della firma dello schema I\+B\+RS.
+
+\begin{DoxyAuthor}{Author}
+Alessandro Midolo 
+
+Salvatore Pizzimento 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{IBRS__CS_2lib-ibrs-verify_8c_a51252e4f7d912c46085186b8c3882aba}\label{IBRS__CS_2lib-ibrs-verify_8c_a51252e4f7d912c46085186b8c3882aba}} 
+\index{lib-\/ibrs-\/verify.c@{lib-\/ibrs-\/verify.c}!ibrs\_import\_sign@{ibrs\_import\_sign}}
+\index{ibrs\_import\_sign@{ibrs\_import\_sign}!lib-\/ibrs-\/verify.c@{lib-\/ibrs-\/verify.c}}
+\doxysubsubsection{\texorpdfstring{ibrs\_import\_sign()}{ibrs\_import\_sign()}}
+{\footnotesize\ttfamily void ibrs\+\_\+import\+\_\+sign (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$}]{public\+\_\+params,  }\item[{int}]{length,  }\item[{F\+I\+LE $\ast$}]{sign\+\_\+stream,  }\item[{\mbox{\hyperlink{structibrs__sig}{ibrs\+\_\+sig}} $\ast$}]{sign }\end{DoxyParamCaption})}
+
+
+
+Funzione per importare la firma da file nella struttura firma. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em public\+\_\+params} & parametri pubblici per lo schema crittografico \\
+\hline
+{\em length} & numero grandezza della struttura firma \\
+\hline
+{\em sign\+\_\+stream} & file stream da cui importare la firma \\
+\hline
+{\em sign} & struttura firma dove inserire i dati \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{IBRS__CS_2lib-ibrs-verify_8c_a35feaf0aa8bfd778a5337ce7dbede114}\label{IBRS__CS_2lib-ibrs-verify_8c_a35feaf0aa8bfd778a5337ce7dbede114}} 
+\index{lib-\/ibrs-\/verify.c@{lib-\/ibrs-\/verify.c}!ibrs\_sign\_clear@{ibrs\_sign\_clear}}
+\index{ibrs\_sign\_clear@{ibrs\_sign\_clear}!lib-\/ibrs-\/verify.c@{lib-\/ibrs-\/verify.c}}
+\doxysubsubsection{\texorpdfstring{ibrs\_sign\_clear()}{ibrs\_sign\_clear()}}
+{\footnotesize\ttfamily void ibrs\+\_\+sign\+\_\+clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structibrs__sig}{ibrs\+\_\+sig}} $\ast$}]{sig }\end{DoxyParamCaption})}
+
+
+
+Funzione per liberare la struttura firma. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sig} & firma da liberare \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{IBRS__CS_2lib-ibrs-verify_8c_a62d5256d09de15ec6b8fc5f6244f1fa1}\label{IBRS__CS_2lib-ibrs-verify_8c_a62d5256d09de15ec6b8fc5f6244f1fa1}} 
+\index{lib-\/ibrs-\/verify.c@{lib-\/ibrs-\/verify.c}!ibrs\_sign\_ver@{ibrs\_sign\_ver}}
+\index{ibrs\_sign\_ver@{ibrs\_sign\_ver}!lib-\/ibrs-\/verify.c@{lib-\/ibrs-\/verify.c}}
+\doxysubsubsection{\texorpdfstring{ibrs\_sign\_ver()}{ibrs\_sign\_ver()}}
+{\footnotesize\ttfamily bool ibrs\+\_\+sign\+\_\+ver (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$}]{public\+\_\+params,  }\item[{\mbox{\hyperlink{structarray__ibrs}{array\+\_\+ibrs}}}]{l,  }\item[{const uint8\+\_\+t $\ast$}]{msg,  }\item[{\mbox{\hyperlink{structibrs__sig}{ibrs\+\_\+sig}} $\ast$}]{sign }\end{DoxyParamCaption})}
+
+
+
+Funzione per verifica la correttezza della firma. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em public\+\_\+params} & parametri pubblici per lo schema crittografico \\
+\hline
+{\em l} & insieme delle identità che partecipano alla firma \\
+\hline
+{\em msg} & messaggio su cui verificare la firma \\
+\hline
+{\em sign} & firma da verificare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se la firma è valida, false altrimenti 
+\end{DoxyReturn}

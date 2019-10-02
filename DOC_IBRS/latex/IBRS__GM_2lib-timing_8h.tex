@@ -1,0 +1,367 @@
+\hypertarget{IBRS__GM_2lib-timing_8h}{}\doxysection{I\+B\+R\+S\+\_\+\+G\+M/lib-\/timing.h File Reference}
+\label{IBRS__GM_2lib-timing_8h}\index{IBRS\_GM/lib-\/timing.h@{IBRS\_GM/lib-\/timing.h}}
+
+
+Prototipi della libreria di supporto.  
+
+
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$sys/time.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structstats__struct}{stats\+\_\+struct}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_ab64660c8964b539b651965eb7e3acaf6}\label{IBRS__GM_2lib-timing_8h_ab64660c8964b539b651965eb7e3acaf6}} 
+\#define {\bfseries C\+L\+O\+C\+K\+\_\+\+G\+E\+T\+R\+U\+S\+A\+G\+E\+\_\+\+ID}~100
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a3a46654ad4d1c7cf171ce0cad996dae3}\label{IBRS__GM_2lib-timing_8h_a3a46654ad4d1c7cf171ce0cad996dae3}} 
+\#define {\bfseries C\+L\+O\+C\+K\+\_\+\+N\+O\+NE}~1000
+\item 
+\#define {\bfseries perform\+\_\+oneshot\+\_\+clock\+\_\+cycles\+\_\+sampling}(E\+L\+A\+P\+S\+E\+D\+\_\+\+T\+I\+ME,  U\+N\+IT,  C\+O\+DE)
+\item 
+\#define {\bfseries perform\+\_\+oneshot\+\_\+timestamp\+\_\+sampling}(E\+L\+A\+P\+S\+E\+D\+\_\+\+T\+I\+ME,  U\+N\+IT,  C\+O\+DE)
+\item 
+\#define {\bfseries perform\+\_\+timestamp\+\_\+sampling}(S\+T\+A\+TS,  V\+E\+C\+T\+OR,  N\+U\+M\+\_\+\+S\+A\+M\+P\+L\+ES,  U\+N\+IT,  C\+O\+DE,  C\+L\+E\+AN)
+\item 
+\#define {\bfseries perform\+\_\+clock\+\_\+cycles\+\_\+sampling}(S\+T\+A\+TS,  V\+E\+C\+T\+OR,  N\+U\+M\+\_\+\+S\+A\+M\+P\+L\+ES,  U\+N\+IT,  C\+O\+DE,  C\+L\+E\+AN)
+\item 
+\#define {\bfseries perform\+\_\+timestamp\+\_\+sampling\+\_\+period}(S\+T\+A\+TS,  P\+E\+R\+I\+OD,  M\+A\+X\+\_\+\+S\+A\+M\+P\+L\+ES,  U\+N\+IT,  C\+O\+DE,  C\+L\+E\+AN)
+\item 
+\#define {\bfseries perform\+\_\+clock\+\_\+cycles\+\_\+sampling\+\_\+period}(S\+T\+A\+TS,  P\+E\+R\+I\+OD,  M\+A\+X\+\_\+\+S\+A\+M\+P\+L\+ES,  U\+N\+IT,  C\+O\+DE,  C\+L\+E\+AN)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a746ca6b5445612cebc39ac3c3b13b0b7}\label{IBRS__GM_2lib-timing_8h_a746ca6b5445612cebc39ac3c3b13b0b7}} 
+\#define {\bfseries printf\+\_\+et}(P\+R\+E\+F\+IX,  N\+U\+M\+B\+ER,  U\+N\+IT,  S\+U\+F\+F\+IX)~fprintf\+\_\+et(stdout, P\+R\+E\+F\+IX, N\+U\+M\+B\+ER, U\+N\+IT, S\+U\+F\+F\+IX)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a77d4bcfb4bafa0a1a2ddae692d22a2b2}\label{IBRS__GM_2lib-timing_8h_a77d4bcfb4bafa0a1a2ddae692d22a2b2}} 
+\#define {\bfseries printf\+\_\+stats}(N\+A\+ME,  S\+T\+A\+TS,  S\+U\+F\+F\+IX)~fprintf\+\_\+stats(stdout, N\+A\+ME, S\+T\+A\+TS, S\+U\+F\+F\+IX)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a7beb502ae49e728cf0e1880202c204e7}\label{IBRS__GM_2lib-timing_8h_a7beb502ae49e728cf0e1880202c204e7}} 
+\#define {\bfseries printf\+\_\+short\+\_\+stats}(N\+A\+ME,  S\+T\+A\+TS,  S\+U\+F\+F\+IX)~fprintf\+\_\+short\+\_\+stats(stdout, N\+A\+ME, S\+T\+A\+TS, S\+U\+F\+F\+IX)
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a46a29c95c5333ebc704bea7192169830}\label{IBRS__GM_2lib-timing_8h_a46a29c95c5333ebc704bea7192169830}} 
+typedef struct timespec {\bfseries timestamp\+\_\+t}\mbox{[}1\mbox{]}
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_aaeeb700ba20d0be885c4f356b59c8ffa}\label{IBRS__GM_2lib-timing_8h_aaeeb700ba20d0be885c4f356b59c8ffa}} 
+typedef double {\bfseries elapsed\+\_\+time\+\_\+t}
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a640b023f180cbf86bac4db224f1653f0}\label{IBRS__GM_2lib-timing_8h_a640b023f180cbf86bac4db224f1653f0}} 
+typedef unsigned long long {\bfseries clock\+\_\+cycles\+\_\+t}
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_aabb7476748d03d27b214ce8253a73f68}\label{IBRS__GM_2lib-timing_8h_aabb7476748d03d27b214ce8253a73f68}} 
+typedef struct \mbox{\hyperlink{structstats__struct}{stats\+\_\+struct}} $\ast$ {\bfseries stats\+\_\+ptr}
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a51c904adfccf23dd2010fb40f63b4ffe}\label{IBRS__GM_2lib-timing_8h_a51c904adfccf23dd2010fb40f63b4ffe}} 
+typedef struct \mbox{\hyperlink{structstats__struct}{stats\+\_\+struct}} {\bfseries stats\+\_\+t}\mbox{[}1\mbox{]}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a57b692d54dfdcc5c1f59fe4172668a02}\label{IBRS__GM_2lib-timing_8h_a57b692d54dfdcc5c1f59fe4172668a02}} 
+enum {\bfseries time\+\_\+unit} \{ \newline
+{\bfseries tu\+\_\+nanos} = 0, 
+{\bfseries tu\+\_\+micros}, 
+{\bfseries tu\+\_\+millis}, 
+{\bfseries tu\+\_\+sec}, 
+\newline
+{\bfseries tu\+\_\+nanos} = 0, 
+{\bfseries tu\+\_\+micros}, 
+{\bfseries tu\+\_\+millis}, 
+{\bfseries tu\+\_\+sec}, 
+\newline
+{\bfseries tu\+\_\+nanos} = 0, 
+{\bfseries tu\+\_\+micros}, 
+{\bfseries tu\+\_\+millis}, 
+{\bfseries tu\+\_\+sec}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a75e85d22237462c6e984b3ac627dab2b}\label{IBRS__GM_2lib-timing_8h_a75e85d22237462c6e984b3ac627dab2b}} 
+void {\bfseries get\+\_\+timestamp} (timestamp\+\_\+t ts)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_ab455723b3b684d4dd8d649be7d39ccf6}\label{IBRS__GM_2lib-timing_8h_ab455723b3b684d4dd8d649be7d39ccf6}} 
+elapsed\+\_\+time\+\_\+t {\bfseries get\+\_\+timestamp\+\_\+resolution} ()
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a821b326fd6b53240fcd6c9c85ed7ac1e}\label{IBRS__GM_2lib-timing_8h_a821b326fd6b53240fcd6c9c85ed7ac1e}} 
+elapsed\+\_\+time\+\_\+t {\bfseries get\+\_\+elapsed\+\_\+time\+\_\+from\+\_\+timestamp} (timestamp\+\_\+t before, timestamp\+\_\+t after)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_aece988e66caecba29beb3286582339b4}\label{IBRS__GM_2lib-timing_8h_aece988e66caecba29beb3286582339b4}} 
+clock\+\_\+cycles\+\_\+t {\bfseries rdtsc} ()
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a61c9bfeedd0111b9b3bc3925f1e666a3}\label{IBRS__GM_2lib-timing_8h_a61c9bfeedd0111b9b3bc3925f1e666a3}} 
+clock\+\_\+cycles\+\_\+t {\bfseries cpuid\+\_\+rdtsc} ()
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a09e42facfe7e288e8b6412c420959aa9}\label{IBRS__GM_2lib-timing_8h_a09e42facfe7e288e8b6412c420959aa9}} 
+clock\+\_\+cycles\+\_\+t {\bfseries rdtscp} ()
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_af028f428bae62da2475e1a9224a5c56d}\label{IBRS__GM_2lib-timing_8h_af028f428bae62da2475e1a9224a5c56d}} 
+clock\+\_\+cycles\+\_\+t {\bfseries rdtscp\+\_\+cpuid} ()
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_aea440129d1f8011d3f745c76040bba96}\label{IBRS__GM_2lib-timing_8h_aea440129d1f8011d3f745c76040bba96}} 
+void {\bfseries set\+\_\+stats\+\_\+kernel\+\_\+cuts} (float lower, float upper)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_ac0632801e064e0ec19b5b93597b51177}\label{IBRS__GM_2lib-timing_8h_ac0632801e064e0ec19b5b93597b51177}} 
+void {\bfseries set\+\_\+clock\+\_\+cycles\+\_\+per\+\_\+ns} (double ratio)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a7f9051c452db2f2538f1c1a578d10516}\label{IBRS__GM_2lib-timing_8h_a7f9051c452db2f2538f1c1a578d10516}} 
+elapsed\+\_\+time\+\_\+t {\bfseries get\+\_\+clock\+\_\+cycles\+\_\+per\+\_\+ns} ()
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_aa87dcad8f155c89d55d8933985aecfba}\label{IBRS__GM_2lib-timing_8h_aa87dcad8f155c89d55d8933985aecfba}} 
+void {\bfseries calibrate\+\_\+clock\+\_\+cycles\+\_\+ratio} ()
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_ac6dddd75e7d5024bb9601a8df383917d}\label{IBRS__GM_2lib-timing_8h_ac6dddd75e7d5024bb9601a8df383917d}} 
+elapsed\+\_\+time\+\_\+t {\bfseries get\+\_\+clock\+\_\+cycles\+\_\+overhead} ()
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a4942c25d591ccf985a5c6083631afab4}\label{IBRS__GM_2lib-timing_8h_a4942c25d591ccf985a5c6083631afab4}} 
+void {\bfseries detect\+\_\+clock\+\_\+cycles\+\_\+overhead} ()
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a31ddc123a109737ecf7f40a0984be540}\label{IBRS__GM_2lib-timing_8h_a31ddc123a109737ecf7f40a0984be540}} 
+elapsed\+\_\+time\+\_\+t {\bfseries get\+\_\+timestamp\+\_\+overhead} ()
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a5aa4d3569fad995663a7f2ff5cf47805}\label{IBRS__GM_2lib-timing_8h_a5aa4d3569fad995663a7f2ff5cf47805}} 
+void {\bfseries detect\+\_\+timestamp\+\_\+overhead} ()
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_ad96bd3312d0caeae5123fe548c90dcab}\label{IBRS__GM_2lib-timing_8h_ad96bd3312d0caeae5123fe548c90dcab}} 
+elapsed\+\_\+time\+\_\+t {\bfseries get\+\_\+elapsed\+\_\+time\+\_\+from\+\_\+cpu\+\_\+cycles} (clock\+\_\+cycles\+\_\+t before, clock\+\_\+cycles\+\_\+t after)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_ae2f487fc3c8b70241921b577a402a1c4}\label{IBRS__GM_2lib-timing_8h_ae2f487fc3c8b70241921b577a402a1c4}} 
+elapsed\+\_\+time\+\_\+t {\bfseries et\+\_\+to} (const elapsed\+\_\+time\+\_\+t ns, enum time\+\_\+unit unit)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a668feecf0923c51f2207f1fd1f8add36}\label{IBRS__GM_2lib-timing_8h_a668feecf0923c51f2207f1fd1f8add36}} 
+void {\bfseries extract\+\_\+stats} (stats\+\_\+t stats, elapsed\+\_\+time\+\_\+t vector\mbox{[}$\,$\mbox{]}, size\+\_\+t size, enum time\+\_\+unit unit)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a42cf056c3806c86a03d072d47ccd5c88}\label{IBRS__GM_2lib-timing_8h_a42cf056c3806c86a03d072d47ccd5c88}} 
+void {\bfseries fprintf\+\_\+et} (F\+I\+LE $\ast$stream, const char $\ast$prefix, const elapsed\+\_\+time\+\_\+t number, enum time\+\_\+unit unit, const char $\ast$suffix)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a48089ddba6b36771b6c164217ddbe92b}\label{IBRS__GM_2lib-timing_8h_a48089ddba6b36771b6c164217ddbe92b}} 
+void {\bfseries fprintf\+\_\+stats} (F\+I\+LE $\ast$stream, const char $\ast$name, const stats\+\_\+t stats, const char $\ast$suffix)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a8378761913197d29494fe8640c9107dd}\label{IBRS__GM_2lib-timing_8h_a8378761913197d29494fe8640c9107dd}} 
+void {\bfseries fprintf\+\_\+short\+\_\+stats} (F\+I\+LE $\ast$stream, const char $\ast$name, const stats\+\_\+t stats, const char $\ast$suffix)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a2d5d7c1c2f31f7d7b2f7c0cd6d6204d9}\label{IBRS__GM_2lib-timing_8h_a2d5d7c1c2f31f7d7b2f7c0cd6d6204d9}} 
+clockid\+\_\+t {\bfseries clock\+\_\+to\+\_\+use}
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_ade48e31731ab81fd8efd78fcebf147ee}\label{IBRS__GM_2lib-timing_8h_ade48e31731ab81fd8efd78fcebf147ee}} 
+clock\+\_\+cycles\+\_\+t($\ast$ {\bfseries get\+\_\+clock\+\_\+cycles\+\_\+before} )()
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_a0902e2f884f6e8f90efe2791bfb0fd4a}\label{IBRS__GM_2lib-timing_8h_a0902e2f884f6e8f90efe2791bfb0fd4a}} 
+clock\+\_\+cycles\+\_\+t($\ast$ {\bfseries get\+\_\+clock\+\_\+cycles\+\_\+after} )()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Prototipi della libreria di supporto. 
+
+Contiene i prototipi della libreria di supporto, le macro, le costanti e tutte le variabili globali utili per il funzionamento.
+
+\begin{DoxyAuthor}{Author}
+Mario Di Raimondo 
+
+Alessandro Midolo 
+
+Salvatore Pizzimento 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_af4174947f42aa3636110699f10870792}\label{IBRS__GM_2lib-timing_8h_af4174947f42aa3636110699f10870792}} 
+\index{lib-\/timing.h@{lib-\/timing.h}!perform\_clock\_cycles\_sampling@{perform\_clock\_cycles\_sampling}}
+\index{perform\_clock\_cycles\_sampling@{perform\_clock\_cycles\_sampling}!lib-\/timing.h@{lib-\/timing.h}}
+\doxysubsubsection{\texorpdfstring{perform\_clock\_cycles\_sampling}{perform\_clock\_cycles\_sampling}}
+{\footnotesize\ttfamily \#define perform\+\_\+clock\+\_\+cycles\+\_\+sampling(\begin{DoxyParamCaption}\item[{}]{S\+T\+A\+TS,  }\item[{}]{V\+E\+C\+T\+OR,  }\item[{}]{N\+U\+M\+\_\+\+S\+A\+M\+P\+L\+ES,  }\item[{}]{U\+N\+IT,  }\item[{}]{C\+O\+DE,  }\item[{}]{C\+L\+E\+AN }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{                                                                          \(\backslash\)}
+\DoxyCodeLine{        assert(STATS != NULL);                                                 \(\backslash\)}
+\DoxyCodeLine{        assert(NUM\_SAMPLES > 0);                                               \(\backslash\)}
+\DoxyCodeLine{        clock\_cycles\_t cc\_before, cc\_after;                                    \(\backslash\)}
+\DoxyCodeLine{        elapsed\_time\_t *vector\_samples =                                       \(\backslash\)}
+\DoxyCodeLine{            (VECTOR != NULL ? VECTOR                                           \(\backslash\)}
+\DoxyCodeLine{                            : (elapsed\_time\_t *)calloc(                        \(\backslash\)}
+\DoxyCodeLine{                                  NUM\_SAMPLES, \textcolor{keyword}{sizeof}(elapsed\_time\_t)));       \(\backslash\)}
+\DoxyCodeLine{        assert(vector\_samples);                                                \(\backslash\)}
+\DoxyCodeLine{        for (\textcolor{keywordtype}{size\_t} vector\_index = 0; vector\_index < NUM\_SAMPLES;              \(\backslash\)}
+\DoxyCodeLine{             vector\_index++) \{                                                 \(\backslash\)}
+\DoxyCodeLine{            cc\_before = get\_clock\_cycles\_before();                             \(\backslash\)}
+\DoxyCodeLine{            \{CODE\};                                                            \(\backslash\)}
+\DoxyCodeLine{            cc\_after = get\_clock\_cycles\_after();                               \(\backslash\)}
+\DoxyCodeLine{            vector\_samples[vector\_index] = et\_to(                              \(\backslash\)}
+\DoxyCodeLine{                get\_elapsed\_time\_from\_cpu\_cycles(cc\_before, cc\_after), UNIT);  \(\backslash\)}
+\DoxyCodeLine{            if ((vector\_index + 1) < NUM\_SAMPLES) \{                            \(\backslash\)}
+\DoxyCodeLine{                CLEAN                                                          \(\backslash\)}
+\DoxyCodeLine{            \}                                                                  \(\backslash\)}
+\DoxyCodeLine{        \}                                                                      \(\backslash\)}
+\DoxyCodeLine{        extract\_stats(STATS, vector\_samples, NUM\_SAMPLES, UNIT);               \(\backslash\)}
+\DoxyCodeLine{        if (VECTOR == NULL)                                                    \(\backslash\)}
+\DoxyCodeLine{            free(vector\_samples);                                              \(\backslash\)}
+\DoxyCodeLine{    \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_aa05479c25ec8a978db04d9f89d653631}\label{IBRS__GM_2lib-timing_8h_aa05479c25ec8a978db04d9f89d653631}} 
+\index{lib-\/timing.h@{lib-\/timing.h}!perform\_clock\_cycles\_sampling\_period@{perform\_clock\_cycles\_sampling\_period}}
+\index{perform\_clock\_cycles\_sampling\_period@{perform\_clock\_cycles\_sampling\_period}!lib-\/timing.h@{lib-\/timing.h}}
+\doxysubsubsection{\texorpdfstring{perform\_clock\_cycles\_sampling\_period}{perform\_clock\_cycles\_sampling\_period}}
+{\footnotesize\ttfamily \#define perform\+\_\+clock\+\_\+cycles\+\_\+sampling\+\_\+period(\begin{DoxyParamCaption}\item[{}]{S\+T\+A\+TS,  }\item[{}]{P\+E\+R\+I\+OD,  }\item[{}]{M\+A\+X\+\_\+\+S\+A\+M\+P\+L\+ES,  }\item[{}]{U\+N\+IT,  }\item[{}]{C\+O\+DE,  }\item[{}]{C\+L\+E\+AN }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{                                                                          \(\backslash\)}
+\DoxyCodeLine{        assert(STATS != NULL);                                                 \(\backslash\)}
+\DoxyCodeLine{        assert(PERIOD >= 0);                                                   \(\backslash\)}
+\DoxyCodeLine{        assert(MAX\_SAMPLES > 0);                                               \(\backslash\)}
+\DoxyCodeLine{        clock\_cycles\_t cc\_before, cc\_after;                                    \(\backslash\)}
+\DoxyCodeLine{        clock\_cycles\_t cc\_begin;                                               \(\backslash\)}
+\DoxyCodeLine{        elapsed\_time\_t *vector\_samples =                                       \(\backslash\)}
+\DoxyCodeLine{            (elapsed\_time\_t *)calloc(MAX\_SAMPLES, \textcolor{keyword}{sizeof}(elapsed\_time\_t));     \(\backslash\)}
+\DoxyCodeLine{        assert(vector\_samples);                                                \(\backslash\)}
+\DoxyCodeLine{        size\_t vector\_index;                                                   \(\backslash\)}
+\DoxyCodeLine{        cc\_begin = get\_clock\_cycles\_before();                                  \(\backslash\)}
+\DoxyCodeLine{        for (vector\_index = 0; vector\_index < MAX\_SAMPLES; vector\_index++) \{   \(\backslash\)}
+\DoxyCodeLine{            cc\_before = get\_clock\_cycles\_before();                             \(\backslash\)}
+\DoxyCodeLine{            \{CODE\} cc\_after = get\_clock\_cycles\_after();                        \(\backslash\)}
+\DoxyCodeLine{            vector\_samples[vector\_index] = et\_to(                              \(\backslash\)}
+\DoxyCodeLine{                get\_elapsed\_time\_from\_cpu\_cycles(cc\_before, cc\_after), UNIT);  \(\backslash\)}
+\DoxyCodeLine{            if (et\_to(get\_elapsed\_time\_from\_cpu\_cycles(cc\_begin, cc\_after),    \(\backslash\)}
+\DoxyCodeLine{                      tu\_sec) > PERIOD) \{                                      \(\backslash\)}
+\DoxyCodeLine{                vector\_index++;                                                \(\backslash\)}
+\DoxyCodeLine{                break;                                                         \(\backslash\)}
+\DoxyCodeLine{            \}                                                                  \(\backslash\)}
+\DoxyCodeLine{            if ((vector\_index + 1) < MAX\_SAMPLES) \{                            \(\backslash\)}
+\DoxyCodeLine{                CLEAN                                                          \(\backslash\)}
+\DoxyCodeLine{            \}                                                                  \(\backslash\)}
+\DoxyCodeLine{        \}                                                                      \(\backslash\)}
+\DoxyCodeLine{        extract\_stats(STATS, vector\_samples, vector\_index, UNIT);              \(\backslash\)}
+\DoxyCodeLine{        free(vector\_samples);                                                  \(\backslash\)}
+\DoxyCodeLine{    \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_adf9a71b415dfcc83fc22840cd0240ec1}\label{IBRS__GM_2lib-timing_8h_adf9a71b415dfcc83fc22840cd0240ec1}} 
+\index{lib-\/timing.h@{lib-\/timing.h}!perform\_oneshot\_clock\_cycles\_sampling@{perform\_oneshot\_clock\_cycles\_sampling}}
+\index{perform\_oneshot\_clock\_cycles\_sampling@{perform\_oneshot\_clock\_cycles\_sampling}!lib-\/timing.h@{lib-\/timing.h}}
+\doxysubsubsection{\texorpdfstring{perform\_oneshot\_clock\_cycles\_sampling}{perform\_oneshot\_clock\_cycles\_sampling}}
+{\footnotesize\ttfamily \#define perform\+\_\+oneshot\+\_\+clock\+\_\+cycles\+\_\+sampling(\begin{DoxyParamCaption}\item[{}]{E\+L\+A\+P\+S\+E\+D\+\_\+\+T\+I\+ME,  }\item[{}]{U\+N\+IT,  }\item[{}]{C\+O\+DE }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{                                                                          \(\backslash\)}
+\DoxyCodeLine{        clock\_cycles\_t cc\_before, cc\_after;                                    \(\backslash\)}
+\DoxyCodeLine{        cc\_before = get\_clock\_cycles\_before();                                 \(\backslash\)}
+\DoxyCodeLine{        \{CODE\};                                                                \(\backslash\)}
+\DoxyCodeLine{        cc\_after = get\_clock\_cycles\_after();                                   \(\backslash\)}
+\DoxyCodeLine{        ELAPSED\_TIME = et\_to(                                                  \(\backslash\)}
+\DoxyCodeLine{            get\_elapsed\_time\_from\_cpu\_cycles(cc\_before, cc\_after), UNIT);      \(\backslash\)}
+\DoxyCodeLine{    \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_aa50bc5fe5d011fe265e9ab0052f2c14a}\label{IBRS__GM_2lib-timing_8h_aa50bc5fe5d011fe265e9ab0052f2c14a}} 
+\index{lib-\/timing.h@{lib-\/timing.h}!perform\_oneshot\_timestamp\_sampling@{perform\_oneshot\_timestamp\_sampling}}
+\index{perform\_oneshot\_timestamp\_sampling@{perform\_oneshot\_timestamp\_sampling}!lib-\/timing.h@{lib-\/timing.h}}
+\doxysubsubsection{\texorpdfstring{perform\_oneshot\_timestamp\_sampling}{perform\_oneshot\_timestamp\_sampling}}
+{\footnotesize\ttfamily \#define perform\+\_\+oneshot\+\_\+timestamp\+\_\+sampling(\begin{DoxyParamCaption}\item[{}]{E\+L\+A\+P\+S\+E\+D\+\_\+\+T\+I\+ME,  }\item[{}]{U\+N\+IT,  }\item[{}]{C\+O\+DE }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{                                                                          \(\backslash\)}
+\DoxyCodeLine{        timestamp\_t ts\_before, ts\_after;                                       \(\backslash\)}
+\DoxyCodeLine{        get\_timestamp(ts\_before);                                              \(\backslash\)}
+\DoxyCodeLine{        \{CODE\};                                                                \(\backslash\)}
+\DoxyCodeLine{        get\_timestamp(ts\_after);                                               \(\backslash\)}
+\DoxyCodeLine{        ELAPSED\_TIME =                                                         \(\backslash\)}
+\DoxyCodeLine{            et\_to(get\_elapsed\_time\_from\_timestamp(ts\_before, ts\_after), UNIT); \(\backslash\)}
+\DoxyCodeLine{    \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_ae2a602d2fb2414286f3260bbc9a4d5de}\label{IBRS__GM_2lib-timing_8h_ae2a602d2fb2414286f3260bbc9a4d5de}} 
+\index{lib-\/timing.h@{lib-\/timing.h}!perform\_timestamp\_sampling@{perform\_timestamp\_sampling}}
+\index{perform\_timestamp\_sampling@{perform\_timestamp\_sampling}!lib-\/timing.h@{lib-\/timing.h}}
+\doxysubsubsection{\texorpdfstring{perform\_timestamp\_sampling}{perform\_timestamp\_sampling}}
+{\footnotesize\ttfamily \#define perform\+\_\+timestamp\+\_\+sampling(\begin{DoxyParamCaption}\item[{}]{S\+T\+A\+TS,  }\item[{}]{V\+E\+C\+T\+OR,  }\item[{}]{N\+U\+M\+\_\+\+S\+A\+M\+P\+L\+ES,  }\item[{}]{U\+N\+IT,  }\item[{}]{C\+O\+DE,  }\item[{}]{C\+L\+E\+AN }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{                                                                          \(\backslash\)}
+\DoxyCodeLine{        assert(STATS != NULL);                                                 \(\backslash\)}
+\DoxyCodeLine{        assert(NUM\_SAMPLES > 0);                                               \(\backslash\)}
+\DoxyCodeLine{        timestamp\_t ts\_before, ts\_after;                                       \(\backslash\)}
+\DoxyCodeLine{        elapsed\_time\_t *vector\_samples =                                       \(\backslash\)}
+\DoxyCodeLine{            (VECTOR != NULL ? VECTOR                                           \(\backslash\)}
+\DoxyCodeLine{                            : (elapsed\_time\_t *)calloc(                        \(\backslash\)}
+\DoxyCodeLine{                                  NUM\_SAMPLES, \textcolor{keyword}{sizeof}(elapsed\_time\_t)));       \(\backslash\)}
+\DoxyCodeLine{        assert(vector\_samples);                                                \(\backslash\)}
+\DoxyCodeLine{        for (\textcolor{keywordtype}{size\_t} vector\_index = 0; vector\_index < NUM\_SAMPLES;              \(\backslash\)}
+\DoxyCodeLine{             vector\_index++) \{                                                 \(\backslash\)}
+\DoxyCodeLine{            get\_timestamp(ts\_before);                                          \(\backslash\)}
+\DoxyCodeLine{            \{CODE\};                                                            \(\backslash\)}
+\DoxyCodeLine{            get\_timestamp(ts\_after);                                           \(\backslash\)}
+\DoxyCodeLine{            vector\_samples[vector\_index] = et\_to(                              \(\backslash\)}
+\DoxyCodeLine{                get\_elapsed\_time\_from\_timestamp(ts\_before, ts\_after), UNIT);   \(\backslash\)}
+\DoxyCodeLine{            if ((vector\_index + 1) < NUM\_SAMPLES) \{                            \(\backslash\)}
+\DoxyCodeLine{                CLEAN                                                          \(\backslash\)}
+\DoxyCodeLine{            \}                                                                  \(\backslash\)}
+\DoxyCodeLine{        \}                                                                      \(\backslash\)}
+\DoxyCodeLine{        extract\_stats(STATS, vector\_samples, NUM\_SAMPLES, UNIT);               \(\backslash\)}
+\DoxyCodeLine{        if (VECTOR == NULL)                                                    \(\backslash\)}
+\DoxyCodeLine{            free(vector\_samples);                                              \(\backslash\)}
+\DoxyCodeLine{    \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{IBRS__GM_2lib-timing_8h_aceb4434b6a49e2f12ede640a796c7646}\label{IBRS__GM_2lib-timing_8h_aceb4434b6a49e2f12ede640a796c7646}} 
+\index{lib-\/timing.h@{lib-\/timing.h}!perform\_timestamp\_sampling\_period@{perform\_timestamp\_sampling\_period}}
+\index{perform\_timestamp\_sampling\_period@{perform\_timestamp\_sampling\_period}!lib-\/timing.h@{lib-\/timing.h}}
+\doxysubsubsection{\texorpdfstring{perform\_timestamp\_sampling\_period}{perform\_timestamp\_sampling\_period}}
+{\footnotesize\ttfamily \#define perform\+\_\+timestamp\+\_\+sampling\+\_\+period(\begin{DoxyParamCaption}\item[{}]{S\+T\+A\+TS,  }\item[{}]{P\+E\+R\+I\+OD,  }\item[{}]{M\+A\+X\+\_\+\+S\+A\+M\+P\+L\+ES,  }\item[{}]{U\+N\+IT,  }\item[{}]{C\+O\+DE,  }\item[{}]{C\+L\+E\+AN }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{                                                                          \(\backslash\)}
+\DoxyCodeLine{        assert(STATS != NULL);                                                 \(\backslash\)}
+\DoxyCodeLine{        assert(PERIOD >= 0);                                                   \(\backslash\)}
+\DoxyCodeLine{        assert(MAX\_SAMPLES > 0);                                               \(\backslash\)}
+\DoxyCodeLine{        timestamp\_t ts\_before, ts\_after;                                       \(\backslash\)}
+\DoxyCodeLine{        timestamp\_t ts\_begin;                                                  \(\backslash\)}
+\DoxyCodeLine{        elapsed\_time\_t *vector\_samples =                                       \(\backslash\)}
+\DoxyCodeLine{            (elapsed\_time\_t *)calloc(MAX\_SAMPLES, \textcolor{keyword}{sizeof}(elapsed\_time\_t));     \(\backslash\)}
+\DoxyCodeLine{        assert(vector\_samples);                                                \(\backslash\)}
+\DoxyCodeLine{        size\_t vector\_index;                                                   \(\backslash\)}
+\DoxyCodeLine{        get\_timestamp(ts\_begin);                                               \(\backslash\)}
+\DoxyCodeLine{        for (vector\_index = 0; vector\_index < MAX\_SAMPLES; vector\_index++) \{   \(\backslash\)}
+\DoxyCodeLine{            get\_timestamp(ts\_before);                                          \(\backslash\)}
+\DoxyCodeLine{            \{CODE\};                                                            \(\backslash\)}
+\DoxyCodeLine{            get\_timestamp(ts\_after);                                           \(\backslash\)}
+\DoxyCodeLine{            vector\_samples[vector\_index] = et\_to(                              \(\backslash\)}
+\DoxyCodeLine{                get\_elapsed\_time\_from\_timestamp(ts\_before, ts\_after), UNIT);   \(\backslash\)}
+\DoxyCodeLine{            if (et\_to(get\_elapsed\_time\_from\_timestamp(ts\_begin, ts\_after),     \(\backslash\)}
+\DoxyCodeLine{                      tu\_sec) > PERIOD) \{                                      \(\backslash\)}
+\DoxyCodeLine{                vector\_index++;                                                \(\backslash\)}
+\DoxyCodeLine{                break;                                                         \(\backslash\)}
+\DoxyCodeLine{            \}                                                                  \(\backslash\)}
+\DoxyCodeLine{            if ((vector\_index + 1) < MAX\_SAMPLES) \{                            \(\backslash\)}
+\DoxyCodeLine{                CLEAN                                                          \(\backslash\)}
+\DoxyCodeLine{            \}                                                                  \(\backslash\)}
+\DoxyCodeLine{        \}                                                                      \(\backslash\)}
+\DoxyCodeLine{        extract\_stats(STATS, vector\_samples, vector\_index, UNIT);              \(\backslash\)}
+\DoxyCodeLine{        free(vector\_samples);                                                  \(\backslash\)}
+\DoxyCodeLine{    \}}
+
+\end{DoxyCode}

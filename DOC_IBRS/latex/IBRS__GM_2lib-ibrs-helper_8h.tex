@@ -1,0 +1,149 @@
+\hypertarget{IBRS__GM_2lib-ibrs-helper_8h}{}\doxysection{I\+B\+R\+S\+\_\+\+G\+M/lib-\/ibrs-\/helper.h File Reference}
+\label{IBRS__GM_2lib-ibrs-helper_8h}\index{IBRS\_GM/lib-\/ibrs-\/helper.h@{IBRS\_GM/lib-\/ibrs-\/helper.h}}
+
+
+Prototipi delle funzioni per l\textquotesingle{}helper del Group Member.  
+
+
+{\ttfamily \#include $<$netdb.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
+{\ttfamily \#include $<$sys/socket.\+h$>$}\newline
+{\ttfamily \#include $<$gmp.\+h$>$}\newline
+{\ttfamily \#include $<$libgen.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$pbc/pbc.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include $<$sys/wait.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}lib-\/timing.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lib-\/ibrs-\/gm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lib-\/ibrs-\/params.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lib-\/ibrs-\/keys.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lib-\/ibrs-\/sign.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}lib-\/ibrs-\/verify.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-ibrs-helper_8h_a369266c24eacffb87046522897a570d5}\label{IBRS__GM_2lib-ibrs-helper_8h_a369266c24eacffb87046522897a570d5}} 
+\#define {\bfseries \+\_\+\+G\+N\+U\+\_\+\+S\+O\+U\+R\+CE}
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-ibrs-helper_8h_a1e43924adac4ae865aa0acf79710261c}\label{IBRS__GM_2lib-ibrs-helper_8h_a1e43924adac4ae865aa0acf79710261c}} 
+\#define {\bfseries SA}~struct sockaddr
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-ibrs-helper_8h_acde992dda6494714e4be9eb3754592d8}\label{IBRS__GM_2lib-ibrs-helper_8h_acde992dda6494714e4be9eb3754592d8}} 
+\#define {\bfseries P\+O\+R\+T\+\_\+\+GA}~8080
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-ibrs-helper_8h_a82e18a9f0b1416f1868acc2e96d7b67c}\label{IBRS__GM_2lib-ibrs-helper_8h_a82e18a9f0b1416f1868acc2e96d7b67c}} 
+\#define {\bfseries P\+O\+R\+T\+\_\+\+CS}~8888
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-ibrs-helper_8h_a3aeed5d2858daa7651dea379658fa05e}\label{IBRS__GM_2lib-ibrs-helper_8h_a3aeed5d2858daa7651dea379658fa05e}} 
+\#define {\bfseries prng\+\_\+sec\+\_\+level}~96
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-ibrs-helper_8h_a858dbee5ca0d32ebc8b6150f6dc62aeb}\label{IBRS__GM_2lib-ibrs-helper_8h_a858dbee5ca0d32ebc8b6150f6dc62aeb}} 
+\#define {\bfseries default\+\_\+sec\+\_\+level}~80
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{IBRS__GM_2lib-ibrs-helper_8h_a6fdb83e408a920573f478a495f94a358}{connect\+\_\+socket}} (char serv\+\_\+addr\mbox{[}$\,$\mbox{]}, int port)
+\begin{DoxyCompactList}\small\item\em Funzione per connettersi ad una socket tramite IP e P\+O\+R\+TA. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{IBRS__GM_2lib-ibrs-helper_8h_aa1adb29d1b1634d3feac938205bc5e14}{rcv\+\_\+data}} (int socket\+\_\+id, char $\ast$read\+\_\+buffer, int size)
+\begin{DoxyCompactList}\small\item\em Funzione per ricevere dati da una socket. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{IBRS__GM_2lib-ibrs-helper_8h_a65f6feafd5ab1357e2af433ddf743fb8}{snd\+\_\+data}} (int socket\+\_\+id, char $\ast$buffer, int size)
+\begin{DoxyCompactList}\small\item\em Funzione per inviare dati ad una socket. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-ibrs-helper_8h_a229cb0bd24215f0cb940e0724dbd4d55}\label{IBRS__GM_2lib-ibrs-helper_8h_a229cb0bd24215f0cb940e0724dbd4d55}} 
+int {\bfseries socket\+\_\+id}
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-ibrs-helper_8h_af93f82fc8029fe6a3b2cb10b086eddb9}\label{IBRS__GM_2lib-ibrs-helper_8h_af93f82fc8029fe6a3b2cb10b086eddb9}} 
+char $\ast$ {\bfseries psw\+\_\+cs}
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-ibrs-helper_8h_aae99fb22d762b87e9fd683124038164f}\label{IBRS__GM_2lib-ibrs-helper_8h_aae99fb22d762b87e9fd683124038164f}} 
+char $\ast$ {\bfseries ip\+\_\+cs}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Prototipi delle funzioni per l\textquotesingle{}helper del Group Member. 
+
+Contiene i prototipi per l\textquotesingle{}helper, le macro, le costanti e tutte le variabili globali utili per il funzionamento.
+
+\begin{DoxyAuthor}{Author}
+Alessandro Midolo 
+
+Salvatore Pizzimento 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{IBRS__GM_2lib-ibrs-helper_8h_a6fdb83e408a920573f478a495f94a358}\label{IBRS__GM_2lib-ibrs-helper_8h_a6fdb83e408a920573f478a495f94a358}} 
+\index{lib-\/ibrs-\/helper.h@{lib-\/ibrs-\/helper.h}!connect\_socket@{connect\_socket}}
+\index{connect\_socket@{connect\_socket}!lib-\/ibrs-\/helper.h@{lib-\/ibrs-\/helper.h}}
+\doxysubsubsection{\texorpdfstring{connect\_socket()}{connect\_socket()}}
+{\footnotesize\ttfamily int connect\+\_\+socket (\begin{DoxyParamCaption}\item[{char}]{serv\+\_\+addr\mbox{[}$\,$\mbox{]},  }\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+Funzione per connettersi ad una socket tramite IP e P\+O\+R\+TA. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serv\+\_\+addr\mbox{[}$\,$\mbox{]}} & indirizzo IP a cui connettersi \\
+\hline
+{\em port} & porta a cui connettersi \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+descrittore della socket connessione socket creata 
+\end{DoxyReturn}
+\mbox{\Hypertarget{IBRS__GM_2lib-ibrs-helper_8h_aa1adb29d1b1634d3feac938205bc5e14}\label{IBRS__GM_2lib-ibrs-helper_8h_aa1adb29d1b1634d3feac938205bc5e14}} 
+\index{lib-\/ibrs-\/helper.h@{lib-\/ibrs-\/helper.h}!rcv\_data@{rcv\_data}}
+\index{rcv\_data@{rcv\_data}!lib-\/ibrs-\/helper.h@{lib-\/ibrs-\/helper.h}}
+\doxysubsubsection{\texorpdfstring{rcv\_data()}{rcv\_data()}}
+{\footnotesize\ttfamily int rcv\+\_\+data (\begin{DoxyParamCaption}\item[{int}]{socket\+\_\+id,  }\item[{char $\ast$}]{read\+\_\+buffer,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Funzione per ricevere dati da una socket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket\+\_\+id} & socket da cui ricevere i dati \\
+\hline
+{\em read\+\_\+buffer} & buffer dove depositare i dati ricevuti \\
+\hline
+{\em size} & numero di caratteri massimi da ricevere \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 se i dati sono stati ricevuti correttamente, 0 altrimenti 
+\end{DoxyReturn}
+\mbox{\Hypertarget{IBRS__GM_2lib-ibrs-helper_8h_a65f6feafd5ab1357e2af433ddf743fb8}\label{IBRS__GM_2lib-ibrs-helper_8h_a65f6feafd5ab1357e2af433ddf743fb8}} 
+\index{lib-\/ibrs-\/helper.h@{lib-\/ibrs-\/helper.h}!snd\_data@{snd\_data}}
+\index{snd\_data@{snd\_data}!lib-\/ibrs-\/helper.h@{lib-\/ibrs-\/helper.h}}
+\doxysubsubsection{\texorpdfstring{snd\_data()}{snd\_data()}}
+{\footnotesize\ttfamily int snd\+\_\+data (\begin{DoxyParamCaption}\item[{int}]{socket\+\_\+id,  }\item[{char $\ast$}]{buffer,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Funzione per inviare dati ad una socket. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em socket\+\_\+id} & socket a cui mandare i dati \\
+\hline
+{\em buffer} & buffer di dati da inviare \\
+\hline
+{\em size} & numero di caratteri massimi da mandare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 se i dati sono stati inviati correttamente, 0 altrimenti 
+\end{DoxyReturn}

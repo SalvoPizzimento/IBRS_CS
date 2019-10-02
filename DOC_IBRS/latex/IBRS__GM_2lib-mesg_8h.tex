@@ -1,0 +1,122 @@
+\hypertarget{IBRS__GM_2lib-mesg_8h}{}\doxysection{I\+B\+R\+S\+\_\+\+G\+M/lib-\/mesg.h File Reference}
+\label{IBRS__GM_2lib-mesg_8h}\index{IBRS\_GM/lib-\/mesg.h@{IBRS\_GM/lib-\/mesg.h}}
+
+
+Prototipi della libreria di supporto.  
+
+
+{\ttfamily \#include \char`\"{}lib-\/timing.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$gmp.\+h$>$}\newline
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_a0e9b838dfe05dcbde12dc05173a685df}\label{IBRS__GM_2lib-mesg_8h_a0e9b838dfe05dcbde12dc05173a685df}} 
+\#define {\bfseries pmesg\+\_\+mpz\+\_\+shortening\+\_\+threshold}~22
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_a9457e577ccd7efca62151cc7540eac21}\label{IBRS__GM_2lib-mesg_8h_a9457e577ccd7efca62151cc7540eac21}} 
+\#define {\bfseries pmesg\+\_\+mpz\+\_\+shortening\+\_\+prefix\+\_\+suffix\+\_\+length}~10
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_af73a1da5afb6c3182fac79318bb8534e}\label{IBRS__GM_2lib-mesg_8h_af73a1da5afb6c3182fac79318bb8534e}} 
+\#define {\bfseries pmesg\+\_\+mpz\+\_\+default\+\_\+base}~10
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_a4dc1074d4cb9cce0a13793603b547131}\label{IBRS__GM_2lib-mesg_8h_a4dc1074d4cb9cce0a13793603b547131}} 
+\#define {\bfseries pmesg\+\_\+io\+\_\+channel}~stdout
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_ae8c7763bd97d1d1c57744f0e46bef24f}\label{IBRS__GM_2lib-mesg_8h_ae8c7763bd97d1d1c57744f0e46bef24f}} 
+\#define {\bfseries pmesg\+\_\+mpz}(level,  name,  number)~(\+\_\+\+\_\+pmesg\+\_\+mpz(level, name, \#number, number, pmesg\+\_\+mpz\+\_\+default\+\_\+base))
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_a76a2ee644b57ff39ab5bff1fa550bebc}\label{IBRS__GM_2lib-mesg_8h_a76a2ee644b57ff39ab5bff1fa550bebc}} 
+\#define {\bfseries pmesg\+\_\+mpz\+\_\+in\+\_\+base}(level,  name,  number,  base)~(\+\_\+\+\_\+pmesg\+\_\+mpz(level, name, \#number, number, base))
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_abbbf6c07ae1a4ae4431ed348bc05244e}\label{IBRS__GM_2lib-mesg_8h_abbbf6c07ae1a4ae4431ed348bc05244e}} 
+\#define {\bfseries pmesg\+\_\+mpf}(level,  name,  number)~(\+\_\+\+\_\+pmesg\+\_\+mpf(level, name, \#number, number))
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_a5556b2600404118c9298cccde350c32b}\label{IBRS__GM_2lib-mesg_8h_a5556b2600404118c9298cccde350c32b}} 
+\#define {\bfseries pmesg\+\_\+hex}(level,  name,  data\+\_\+size,  data)~(\+\_\+\+\_\+pmesg\+\_\+hex(level, name, \#data, data\+\_\+size, data))
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_a43a966482be48038e63d918677df555b}\label{IBRS__GM_2lib-mesg_8h_a43a966482be48038e63d918677df555b}} 
+\#define {\bfseries pmesg\+\_\+stats}(level,  name,  stats)~(\+\_\+\+\_\+pmesg\+\_\+stats(level, name, \#stats, stats))
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_a87dcf4bf7d51ed3cc31081df5d8efce1}\label{IBRS__GM_2lib-mesg_8h_a87dcf4bf7d51ed3cc31081df5d8efce1}} 
+\#define {\bfseries pmesg\+\_\+element}(level,  name,  element)~(\+\_\+\+\_\+pmesg\+\_\+element(level, name, \#element, element))
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_a735288504a25ff065d99b5f686afd7ca}\label{IBRS__GM_2lib-mesg_8h_a735288504a25ff065d99b5f686afd7ca}} 
+\#define {\bfseries pmesg}~gmp\+\_\+pmesg
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_aa068cce125f16fc803e14bea03b3a5ce}\label{IBRS__GM_2lib-mesg_8h_aa068cce125f16fc803e14bea03b3a5ce}} 
+enum {\bfseries msg\+\_\+level\+\_\+t} \{ \newline
+{\bfseries msg\+\_\+silence}, 
+{\bfseries msg\+\_\+normal}, 
+{\bfseries msg\+\_\+verbose}, 
+{\bfseries msg\+\_\+very\+\_\+verbose}, 
+\newline
+{\bfseries msg\+\_\+silence}, 
+{\bfseries msg\+\_\+normal}, 
+{\bfseries msg\+\_\+verbose}, 
+{\bfseries msg\+\_\+very\+\_\+verbose}, 
+\newline
+{\bfseries msg\+\_\+silence}, 
+{\bfseries msg\+\_\+normal}, 
+{\bfseries msg\+\_\+verbose}, 
+{\bfseries msg\+\_\+very\+\_\+verbose}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_a0219dd287b8c99a54671e59a0ea74a1f}\label{IBRS__GM_2lib-mesg_8h_a0219dd287b8c99a54671e59a0ea74a1f}} 
+int {\bfseries gmp\+\_\+vfprintf} (F\+I\+LE $\ast$, const char $\ast$, va\+\_\+list)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_a47b518d4ad3ca62caa7e4f22ea9d3079}\label{IBRS__GM_2lib-mesg_8h_a47b518d4ad3ca62caa7e4f22ea9d3079}} 
+int {\bfseries gmp\+\_\+fprintf} (F\+I\+LE $\ast$, const char $\ast$,...)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_a5ebeee8d35a2c9b562bdd4fde69ad612}\label{IBRS__GM_2lib-mesg_8h_a5ebeee8d35a2c9b562bdd4fde69ad612}} 
+size\+\_\+t {\bfseries mpz\+\_\+out\+\_\+str} (F\+I\+LE $\ast$, int, mpz\+\_\+srcptr)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_a0f56e4680597bf0f12e2a3b6688455f9}\label{IBRS__GM_2lib-mesg_8h_a0f56e4680597bf0f12e2a3b6688455f9}} 
+void {\bfseries plain\+\_\+pmesg} (msg\+\_\+level\+\_\+t level, const char $\ast$format,...)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_aa688f6ebc0551ebf7696d27ef0b06a4e}\label{IBRS__GM_2lib-mesg_8h_aa688f6ebc0551ebf7696d27ef0b06a4e}} 
+void {\bfseries gmp\+\_\+pmesg} (msg\+\_\+level\+\_\+t level, const char $\ast$format,...)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_a1528170c6cc0076c96b047faafb224b7}\label{IBRS__GM_2lib-mesg_8h_a1528170c6cc0076c96b047faafb224b7}} 
+void {\bfseries \+\_\+\+\_\+pmesg\+\_\+mpz} (msg\+\_\+level\+\_\+t level, const char $\ast$name, const char $\ast$var\+\_\+name, const mpz\+\_\+t number, int base)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_af56992b79a50f722b9f7f705162f23ec}\label{IBRS__GM_2lib-mesg_8h_af56992b79a50f722b9f7f705162f23ec}} 
+void {\bfseries \+\_\+\+\_\+pmesg\+\_\+mpf} (msg\+\_\+level\+\_\+t level, const char $\ast$name, const char $\ast$var\+\_\+name, const mpf\+\_\+t number)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_a7c0f6175df10509aa858be522f9dba01}\label{IBRS__GM_2lib-mesg_8h_a7c0f6175df10509aa858be522f9dba01}} 
+void {\bfseries \+\_\+\+\_\+pmesg\+\_\+hex} (msg\+\_\+level\+\_\+t level, const char $\ast$name, const char $\ast$var\+\_\+name, size\+\_\+t data\+\_\+size, const void $\ast$data)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_a4ff84172f4552dedc75218e7081d2292}\label{IBRS__GM_2lib-mesg_8h_a4ff84172f4552dedc75218e7081d2292}} 
+void {\bfseries \+\_\+\+\_\+pmesg\+\_\+stats} (msg\+\_\+level\+\_\+t level, const char $\ast$name, const char $\ast$var\+\_\+name, const stats\+\_\+t stats)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_a6fff06c15b4a8f493065b15ffa1394c5}\label{IBRS__GM_2lib-mesg_8h_a6fff06c15b4a8f493065b15ffa1394c5}} 
+void {\bfseries set\+\_\+messaging\+\_\+level} (msg\+\_\+level\+\_\+t l)
+\item 
+\mbox{\Hypertarget{IBRS__GM_2lib-mesg_8h_a8d4d30bb038b9861697289f0efab68c7}\label{IBRS__GM_2lib-mesg_8h_a8d4d30bb038b9861697289f0efab68c7}} 
+msg\+\_\+level\+\_\+t {\bfseries get\+\_\+messaging\+\_\+level} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Prototipi della libreria di supporto. 
+
+Contiene i prototipi della libreria di supporto, le macro, le costanti e tutte le variabili globali utili per il funzionamento.
+
+\begin{DoxyAuthor}{Author}
+Mario Di Raimondo 
+
+Alessandro Midolo 
+
+Salvatore Pizzimento 
+\end{DoxyAuthor}

@@ -1,0 +1,55 @@
+\hypertarget{lib-ibrs-sign_8c}{}\doxysection{I\+B\+R\+S\+\_\+\+G\+M/lib-\/ibrs-\/sign.c File Reference}
+\label{lib-ibrs-sign_8c}\index{IBRS\_GM/lib-\/ibrs-\/sign.c@{IBRS\_GM/lib-\/ibrs-\/sign.c}}
+
+
+Firma per il Group Member.  
+
+
+{\ttfamily \#include \char`\"{}lib-\/ibrs-\/sign.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{lib-ibrs-sign_8c_a29175b98e90ab941b0da874a08a24ddb}{ibrs\+\_\+sign}} (\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$public\+\_\+params, \mbox{\hyperlink{structarray__ibrs}{array\+\_\+ibrs}} l, const uint8\+\_\+t $\ast$msg, int signer\+\_\+idx, \mbox{\hyperlink{structibrs__key__pair}{ibrs\+\_\+key\+\_\+pair}} $\ast$keys, \mbox{\hyperlink{structibrs__sig}{ibrs\+\_\+sig}} $\ast$sign, F\+I\+LE $\ast$sign\+\_\+stream)
+\begin{DoxyCompactList}\small\item\em Funzione per effetturare una firma di un messaggio su un gruppo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Firma per il Group Member. 
+
+File contenente le funzioni per gestire la firma dello schema I\+B\+RS.
+
+\begin{DoxyAuthor}{Author}
+Alessandro Midolo 
+
+Salvatore Pizzimento 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{lib-ibrs-sign_8c_a29175b98e90ab941b0da874a08a24ddb}\label{lib-ibrs-sign_8c_a29175b98e90ab941b0da874a08a24ddb}} 
+\index{lib-\/ibrs-\/sign.c@{lib-\/ibrs-\/sign.c}!ibrs\_sign@{ibrs\_sign}}
+\index{ibrs\_sign@{ibrs\_sign}!lib-\/ibrs-\/sign.c@{lib-\/ibrs-\/sign.c}}
+\doxysubsubsection{\texorpdfstring{ibrs\_sign()}{ibrs\_sign()}}
+{\footnotesize\ttfamily void ibrs\+\_\+sign (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structibrs__public__params__t}{ibrs\+\_\+public\+\_\+params\+\_\+t}} $\ast$}]{public\+\_\+params,  }\item[{\mbox{\hyperlink{structarray__ibrs}{array\+\_\+ibrs}}}]{l,  }\item[{const uint8\+\_\+t $\ast$}]{msg,  }\item[{int}]{signer\+\_\+idx,  }\item[{\mbox{\hyperlink{structibrs__key__pair}{ibrs\+\_\+key\+\_\+pair}} $\ast$}]{keys,  }\item[{\mbox{\hyperlink{structibrs__sig}{ibrs\+\_\+sig}} $\ast$}]{sign,  }\item[{F\+I\+LE $\ast$}]{sign\+\_\+stream }\end{DoxyParamCaption})}
+
+
+
+Funzione per effetturare una firma di un messaggio su un gruppo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em public\+\_\+params} & parametri pubblici per lo schema crittografico \\
+\hline
+{\em l} & insieme delle identità che partecipano alla firma \\
+\hline
+{\em msg} & messaggio da firmare \\
+\hline
+{\em signer\+\_\+idx} & indice del firmatario rispetto alla lista di identità \\
+\hline
+{\em keys} & struttura con la coppia di chiavi del firmatario \\
+\hline
+{\em sign} & struttura dove depositare la firma \\
+\hline
+{\em sign\+\_\+stream} & file stream dove salvare la firma \\
+\hline
+\end{DoxyParams}
