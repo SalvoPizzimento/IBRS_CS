@@ -320,39 +320,6 @@ void start_exchange(int sockfd){
 	    	free(filename);
 	    	return;
 	    }
-		printf("inizio invio keypair\n");
-	    FILE* key_file;
-        char* read_buffer;
-        offset = 0;
-
-        key_file = fopen("/home/ubuntu/.ssh/KeyPair.pem", "r");
-        for(int i=0; i<2; i++){
-        	fseek(key_file, offset, SEEK_SET);
-	        read_buffer = calloc(1024, sizeof(char));
-	        if(fread(read_buffer, sizeof(char), 1024, key_file) > 1024){
-	            printf("problema nella read del file\n");
-	            fclose(key_file);
-	            free(read_buffer);
-	            free(username);
-		    	free(groupname);
-		    	free(filename);
-	            return;
-	        }
-
-	        if(snd_data(sockfd, read_buffer, 1024) == 0){
-	        	fclose(key_file);
-			free(read_buffer);
-	            free(username);
-		    	free(groupname);
-		    	free(filename);
-	        	return;
-	        }
-
-	        free(read_buffer);
-	        offset = 1024;
-	    }
-		printf("FILE PEM INVIATO.\n");
-		fclose(key_file);
 		request = calloc(50, sizeof(char));
 		if(rcv_data(sockfd, request, 1024) == 0){
 			free(request);
