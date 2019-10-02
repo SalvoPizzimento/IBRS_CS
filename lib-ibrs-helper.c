@@ -296,8 +296,10 @@ void start_exchange(int sockfd){
         free(file_buffer);
 
 	    bool result;
+		printf("prima ver\n");
 	    result = ibrs_verify(groupname, filename);
 		remove("sign.txt");
+		printf("dopo ver\n");
 		
 	    if(result){
 	    	if(snd_data(sockfd, "ACK", 3) == 0){
@@ -320,12 +322,12 @@ void start_exchange(int sockfd){
 	    	free(filename);
 	    	return;
 	    }
-
+		printf("inizio invio keypair\n");
 	    FILE* key_file;
         char* read_buffer;
         offset = 0;
 
-        key_file = fopen("KeyPair.pem", "r");
+        key_file = fopen("/home/ubuntu/.ssh/KeyPair.pem", "r");
         for(int i=0; i<2; i++){
         	fseek(key_file, offset, SEEK_SET);
 	        read_buffer = calloc(1024, sizeof(char));
@@ -338,19 +340,21 @@ void start_exchange(int sockfd){
 		    	free(filename);
 	            return;
 	        }
-	        fclose(key_file);
-		printf("READ_BUFFER: %s\n", read_buffer); 
+
 	        if(snd_data(sockfd, read_buffer, 1024) == 0){
-	        	free(read_buffer);
+	        	fclose(key_file);
+			free(read_buffer);
 	            free(username);
 		    	free(groupname);
 		    	free(filename);
 	        	return;
 	        }
+
 	        free(read_buffer);
 	        offset = 1024;
 	    }
-
+		printf("FILE PEM INVIATO.\n");
+		fclose(key_file);
 		request = calloc(50, sizeof(char));
 		if(rcv_data(sockfd, request, 1024) == 0){
 			free(request);
